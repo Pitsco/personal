@@ -1,6 +1,6 @@
 ---
-title: Collaboration Evidence
-description: collaboration evidence with crossover team with Code Monkeys
+title: Collaboration Evidence + Video
+description: collaboration evidence with crossover team with Code Monkeys, 30 second video about how I solved the FRQ
 layout: post
 courses: {'csa': {'week': 5}}
 categories: ['C4.0']
@@ -64,3 +64,5 @@ type: tangibles
 - Understand class, constructor, and variables in.
 - Why the grade: Good explanation, go into more detail in vocabulary. Also work in time management.
 
+
+## Video: [video](https://youtu.be/ISbrmXcqU8s)
