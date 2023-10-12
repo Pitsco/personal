@@ -64,5 +64,12 @@ type: tangibles
 - Understand class, constructor, and variables in.
 - Why the grade: Good explanation, go into more detail in vocabulary. Also work in time management.
 
+### FRQ #4: 2D Array: 0.95/1
+- Repopulate method
+- Populate method returns none
+- can only return a value that is divisible by 10, not 100
+
+
+
 
 ## Video: [video](https://youtu.be/ISbrmXcqU8s)
