@@ -2,7 +2,7 @@ title: Derrick's website
 description: "August 2023 to June 2024"
 owner_name: Derrick Huang
 github_username: Pitsco
-baseurl: "/student"
+baseurl: "/personal"
 remote_theme: pages-themes/midnight@v0.2.0
 # remote_theme: pages-themes/dinky@v0.2.0
 # remote_theme: pages-themes/minimal@v0.2.0
