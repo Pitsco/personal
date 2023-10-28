@@ -46,7 +46,7 @@ Answer: ArrayLists should be used when you need a resizable data structure, as t
 Showing how ArrayLists are mutable:
 
 
-```Java
+```java
 import java.util.ArrayList;
 
 class ArrayListExample { 
@@ -90,7 +90,7 @@ ArrayListExample.main(null);
 Create an ArrayList that stores the integers 5, 8, 14, 18, 24, 39, and 56 and only print the numbers that are divisible by 3.
 
 
-```Java
+```java
 import java.util.ArrayList;
 
 public class DivisibleBy3 {
@@ -146,7 +146,7 @@ DivisibleBy3.main(null);
     - Get the length of the ArrayList
 
 
-```Java
+```java
 import java.util.ArrayList;
 
 public class Test {
@@ -186,7 +186,7 @@ Test.main(null);
 - You can print **ArrayLists** with just one `System.out.println()`
 
 
-```Java
+```java
 import java.util.ArrayList;
 
 public class Main {
@@ -220,7 +220,7 @@ Main.main(null);
 Finish the code below so that all duplicates in the ArrayList are removed.
 
 
-```Java
+```java
 import java.util.ArrayList;
 
 public class RemoveDuplicates {
@@ -266,7 +266,7 @@ RemoveDuplicates.main(null);
 - You can use the Arrays.asList() method to convert an existing **array** to an **ArrayList**
 
 
-```Java
+```java
 public class ArrayListFromArray
 {
     public static void main(String[] args)
@@ -290,7 +290,7 @@ ArrayListFromArray.main(null);
     - Do not delete elements in an ArrayList while using an enhanced for loop
 
 
-```Java
+```java
 public static void main(String[] args)
 {
     ArrayList<Integer> arr = new ArrayList<>();        
@@ -322,7 +322,7 @@ main(null);
     1 7 9 13 3 7 9 2 
 
 
-```Java
+```java
 public static void main(String[] args)
 {
     ArrayList<Integer> arr = new ArrayList<>();        
@@ -365,7 +365,7 @@ main(null);
 Traverse the following ArrayList using a loop. Remove each element that is a multiple of 4.
 
 
-```Java
+```java
 public static void main(String[] args)
 {
     ArrayList<Integer> arr = new ArrayList<>();        
@@ -392,7 +392,7 @@ main(null);
 Find the maximum, minimum, and sum of an ArrayList.
 
 
-```Java
+```java
 public static void main(String[] args)
 {
     ArrayList<Integer> arr = new ArrayList<>();        
@@ -445,7 +445,7 @@ main(null);
 #### Example of Linear Search
 
 
-```Java
+```java
 import java.util.ArrayList;
 
 public class LinearSearch {
@@ -490,7 +490,7 @@ LinearSearch.main(null);
 - Using a loop, print a message saying if favoriteFlavor is in the bag
 
 
-```Java
+```java
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -538,7 +538,7 @@ FavoriteChip.main(null);
 #### Example of Selection sort
 
 
-```Java
+```java
 import java.util.ArrayList;
 
 public class SelectionSort {
@@ -604,7 +604,7 @@ SelectionSort.main(null);
 #### Example of Insertion Sort
 
 
-```Java
+```java
 import java.util.ArrayList;
 
 public class InsertionSort {
@@ -663,7 +663,7 @@ Given an ArrayList of String objects, sort the following ArrayLists on ascending
 ## 1)
 
 
-```Java
+```java
 import java.util.ArrayList;
 
 public class SortByLength {
@@ -705,7 +705,7 @@ SortByLength.main(null);
 ## 2)
 
 
-```Java
+```java
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -773,7 +773,7 @@ When collecting data in a Java program, data security is **VERY IMPORTANT**. Thi
 > Collegeboard Example
 
 
-```Java
+```java
 Scanner inputScanner = new Scanner(System.in);
 String fullName = inputScanner.nextLine();
 
@@ -798,7 +798,7 @@ This minimizes the possible impact of the data by reducing the likelihood of uni
 - Write a Java program that creates an ArrayList of integers. Create methods for adding, removing, setting, getting, etc numbers and also sort the list. Then, utilize user input to determine which methods will actually be run and enable the user to also determine the specific index that a number will be added, removed.
 
 
-```Java
+```java
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
