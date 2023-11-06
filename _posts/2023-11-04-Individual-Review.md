@@ -15,7 +15,7 @@ type: tangibles
 Code with comments: 
 
 
-```Java
+```java
 // Adding scroll and resize event listeners to the window
 window.addEventListener("scroll", setScrollVar);
 window.addEventListener("resize", setScrollVar);
@@ -69,6 +69,8 @@ document.querySelectorAll("[data-img-to-show]").forEach(section => {
   observer.observe(section);
 });
 ```
+
+Additional Notes for code in [blog]({{site.baseurl}}/c4.0/2023/10/20/Javascript-Project-Code.html)
 
 
 ## Github Analytics Review
