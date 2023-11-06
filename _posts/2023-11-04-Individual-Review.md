@@ -2,7 +2,7 @@
 title: Final Project - Individual
 description: Individual Code and Individual Blog
 layout: post
-courses: {'csa': {'week': 12}}
+courses: {'csa': {'week': 11}}
 categories: ['C4.0']
 type: tangibles
 ---
@@ -15,7 +15,7 @@ type: tangibles
 Code with comments: 
 
 
-```Java
+```java
 // This code snippet is written in JavaScript and is meant to be used in a web page
 
 // Adding scroll and resize event listeners to the window

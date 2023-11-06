@@ -4,7 +4,7 @@ description: Tech talk going over object oriented progamming in javascript
 layout: post
 courses: {'csa': {'week': 9}}
 categories: ['C4.0']
-type: tangibles
+type: hacks
 ---
 
 # Javascript class

@@ -1,10 +1,10 @@
 ---
-title: Object Classes
+title: U2 - Object Classes
 description: Object Classes
 layout: post
 courses: {'csa': {'week': 7}}
 categories: ['C4.0']
-type: tangibles
+type: hacks
 ---
 
 ### Java objects

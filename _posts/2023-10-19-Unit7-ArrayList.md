@@ -4,7 +4,7 @@ description: Lesson on the College Board Unit 6 Arrays. This is the teacher note
 layout: post
 courses: {'csa': {'week': 10}}
 categories: ['C4.0']
-type: tangibles
+type: hacks
 ---
 
 ## 7.1 Intro to ArrayLists

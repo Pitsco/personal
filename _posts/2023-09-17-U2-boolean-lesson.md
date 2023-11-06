@@ -2,9 +2,9 @@
 title: U3 Boolean and If statements
 description: Lesson on booleans and if statements!
 layout: post
-courses: {'csa': {'week': 7}}
+courses: {'csa': {'week': 8}}
 categories: ['C4.0']
-type: tangibles
+type: hacks
 ---
 
 # APCSA Unit 3: College Board Learning Objectives and Standards

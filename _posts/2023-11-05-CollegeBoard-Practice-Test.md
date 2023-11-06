@@ -1,5 +1,10 @@
 ---
-
+title: College Board Questions
+description: College Board Questions that I missed/need to be reviewed on
+layout: post
+courses: {'csa': {'week': 11}}
+categories: ['C4.0']
+type: hacks
 ---
 
 # Questions I missed: 
