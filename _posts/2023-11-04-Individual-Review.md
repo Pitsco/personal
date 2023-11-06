@@ -16,8 +16,6 @@ Code with comments:
 
 
 ```Java
-// This code snippet is written in JavaScript and is meant to be used in a web page
-
 // Adding scroll and resize event listeners to the window
 window.addEventListener("scroll", setScrollVar);
 window.addEventListener("resize", setScrollVar);
@@ -87,13 +85,15 @@ As you can see, I've not been committing as much as my other group members. My p
 
 I also have a bad habit of committing in less commits with more code, not little by little with smaller changes. This could be detrimental big commits/changes may not save sometimes, which in the end can cost a lot of time wasted. Although I've not faced that yet, I should be more catious by committing more changes so I don't lose much progress if my commits don't process through.
 
+[About Page](https://csa-tri-1.github.io/DADDiJkstra-frontend/pages/about)
 
 # Individual Blog:
 
 ### Code in blog:
-[Timebox]({{site.baseurl}}/csa)
+[Timebox]({{site.baseurl}}/csa) with all my plans for the week and plans
 
 ### Usage in blog: 
+[Joint.JS Blog]()
 
 
 ### CollegeBoard Quiz Notes:
@@ -107,6 +107,7 @@ See my Student Lesson [scores]({{site.baseurl}}/c4.0/2023/11/05/Student-Lessons-
 - I have never touched Javascript or Java before, new experience
 - PBL learning with matching game, first full on experience with javascript code.
 - Mom and ChatGPT has really helped me understood java and javascript
+- Understanding deployment with AWS
 
 ### Accomplishments:
 - More collaborative with team, understood my role as developer
