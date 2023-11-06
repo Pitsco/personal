@@ -15,7 +15,7 @@ type: tangibles
 Code with comments: 
 
 
-```java
+```Java
 // This code snippet is written in JavaScript and is meant to be used in a web page
 
 // Adding scroll and resize event listeners to the window
@@ -91,22 +91,28 @@ I also have a bad habit of committing in less commits with more code, not little
 # Individual Blog:
 
 ### Code in blog:
+[Timebox]({{site.baseurl}}/blogs)
 
 ### Usage in blog: 
 
 
 ### CollegeBoard Quiz Notes:
+See my CollegeBoard Test with Review [Notes]({{site.baseurl}}/c4.0/2023/11/05/CollegeBoard-Practice-Test.html):
 
 ## Trimester 1 Reflection:
 
 ### Memories and Learning:
 - I have never touched Javascript or Java before, new experience
 - PBL learning with matching game, first full on experience with javascript code.
+- Mom and ChatGPT has really helped me understood java and javascript
 
 ### Accomplishments:
-- More collaborative with team, understood my role
+- More collaborative with team, understood my role as developer
+    - Development with backend with [AWS](https://nighthawkcoders.github.io/teacher//c7.0/c7.1/c7.2/2023/09/27/aws-deployment_IPYNB_2_.html)
+        - Alex mainly helped me with development, followed instructions
+    - David helped me setting up VScode and cloning repositories in WSL, understood basic functions such as "cd" or "gitclone"
+    - Collaborated with Jishnu on frontend, about page and front page
 - Felt more engaged, spent more time coding than I have done in the past year in AP CSP
-
 
 ### What I can improve on:
 - Contributing to more of the main project
@@ -114,5 +120,7 @@ I also have a bad habit of committing in less commits with more code, not little
 - Touching more on backend, rather than just front end
     - Something to do with machine learning in the next 2 tris (Alex's idea)? Sentiment Analysis?
 - Still be more engaged, sometimes I'm on my phone when I shouldn't be
+- Engagement of class lessons should be increased
+    - More particpation by raising hand
 
 
