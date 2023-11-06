@@ -91,13 +91,15 @@ I also have a bad habit of committing in less commits with more code, not little
 # Individual Blog:
 
 ### Code in blog:
-[Timebox]({{site.baseurl}}/blogs)
+[Timebox]({{site.baseurl}}/csa)
 
 ### Usage in blog: 
 
 
 ### CollegeBoard Quiz Notes:
-See my CollegeBoard Test with Review [Notes]({{site.baseurl}}/c4.0/2023/11/05/CollegeBoard-Practice-Test.html):
+See my CollegeBoard Test with Review [Notes]({{site.baseurl}}/c4.0/2023/11/05/CollegeBoard-Practice-Test.html)
+
+See my Student Lesson [scores]({{site.baseurl}}/c4.0/2023/11/05/Student-Lessons-Grading.html)
 
 ## Trimester 1 Reflection:
 
