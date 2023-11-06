@@ -93,7 +93,9 @@ I also have a bad habit of committing in less commits with more code, not little
 [Timebox]({{site.baseurl}}/csa) with all my plans for the week and plans
 
 ### Usage in blog: 
-[Joint.JS Blog]()
+[Joint.JS Blog]({{site.baseurl}}/c4.0/2023/11/02/JointJS-blog.html) is a prime example of blogs for me. As I've had experienced with Frontend code, Joint.JS is a big issue for me. I was tasked to do the Joint.JS graphing, but I didn't have a chance to get to it because of my about page.
+
+[Jekyll with HTML Blog]({{sit.baseurl}}/c4.0/2023/10/29/Jekyll-Notes.html) is used even in this notebook right now. It efficently links files together, which I noted in my blog. My blog mainly described how it was used in the project, which I integrated into my personal notebook as well.
 
 
 ### CollegeBoard Quiz Notes:
@@ -124,6 +126,6 @@ See my Student Lesson [scores]({{site.baseurl}}/c4.0/2023/11/05/Student-Lessons-
     - Something to do with machine learning in the next 2 tris (Alex's idea)? Sentiment Analysis?
 - Still be more engaged, sometimes I'm on my phone when I shouldn't be
 - Engagement of class lessons should be increased
-    - More particpation by raising hand
+    - More particpation by raising hand, going more in depth with hacks.
 
 

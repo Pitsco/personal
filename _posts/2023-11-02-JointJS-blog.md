@@ -42,3 +42,60 @@ The code appears to use various data structures like arrays and matrices to mana
 
 Other Features:
 The code has several other features and functions for managing elements within the graph, as well as for managing tools, tools' visibility, and more.
+
+Import JointJS: The code imports the JointJS library at the beginning with other libraries.
+
+```
+const graph = new joint.dia.Graph;
+const paperElement = document.getElementById('interactive-graph');
+const paper = new joint.dia.Paper({
+    el: paperElement,
+    // ...
+});
+```
+
+Creating a Graph: The joint.dia.Graph is used to create a graph object that stores elements and their relationships in the diagram.
+
+Creating a Paper: The joint.dia.Paper object is used to render and interact with the graph. It specifies the canvas element on which the graph is drawn, as well as various properties like width, height, and interactivity settings.
+
+Creating Elements: The code uses JointJS to create and manage elements (nodes) in the graph. For example, the createNode function creates a new node, and the createLink function creates links between nodes.
+
+```
+function createNode(id) {
+    var node = new joint.shapes.standard.Circle({
+        id,
+        size: { width: 40, height: 40 },
+        attrs: {
+            body: {
+                fill: 'black'
+            },
+            label: {
+                fill: 'white'
+            }
+        }
+    }).addTo(graph);
+    // ...
+    return node;
+}
+
+function createLink(s, t) {
+    // ...
+    var link = new joint.shapes.standard.Link({
+        id: [s, t].sort().join(),
+        source: { id: s },
+        target: { id: t },
+        z: 1,
+        // ...
+    });
+    // ...
+    link.addTo(graph);
+}
+```
+
+Event Handling: JointJS allows you to handle events such as mouse interactions with elements on the graph. The code includes event handlers for various events like pointer clicks, element removal, and element addition.
+
+Styling and Highlighting: JointJS provides facilities for styling and highlighting elements. The code uses highlighters to add and remove classes and styles from elements, making them visually interactive.
+
+Pathfinding: The code also uses JointJS to find and display paths between elements in the graph.
+
+In summary, JointJS is used in this code to create, display, and manage a graph, as well as to enable interactivity and pathfinding features for the graph.
