@@ -39,3 +39,34 @@ Jekyll can convert markdown content to HTML. While the code provided doesn't inc
 ### Summary: 
 Jekyll is used in this code to structure the HTML page, define metadata, link CSS and JavaScript files, and convert markdown content to HTML. When building a site with Jekyll, it generates the final HTML pages based on these templates and configurations.
 
+
+
+```java
+
+```
+
+
+    incompatible types: invalid method reference
+
+        unexpected static method fibonacciFor(int) found in bound lookup
+
+    
+
+    incompatible types: invalid method reference
+
+        unexpected static method fibonacciWhile(int) found in bound lookup
+
+    
+
+    incompatible types: invalid method reference
+
+        unexpected static method fibonacciRecursive(int) found in bound lookup
+
+    
+
+    incompatible types: invalid method reference
+
+        unexpected static method fibonacciStream(int) found in bound lookup
+
+    
+
