@@ -492,7 +492,7 @@ $padding: 10px
 Create a grid layout that automatically adjusts the number of columns based on the screen size, using SASS variables and functions.
 
 
-```Java
+```java
 //SASS variables
 $base-column-width: 100px; //Adjust as needed
 $min-columns: 2;
@@ -792,7 +792,7 @@ $primary-color: #3498db; // Change this to an invalid color, e.g., 'red'
 ```
 
 
-```Java
+```java
 %%html
 <div style="background-color: #3498db; padding: 20px;">
   <p style="color: #fff;">This is an example element with a primary color background.</p>
@@ -830,7 +830,7 @@ body {
 ```
 
 
-```Java
+```java
 %%html
 <style>
   body {
@@ -859,7 +859,7 @@ In this example, the @debug statement will print a message to the console during
 Try changing the primary color to an invalid value (e.g., 'red') and observe the @error message. Then, correct it to a valid color.
 
 
-```Java
+```java
 $primary-color: 'red'; //invalid color value
 
 @if not str-slice($primary-color, 1, 1) == "#" {
@@ -875,7 +875,7 @@ body {
 Modify the base font size and observe the @debug message. Try different font sizes and see how it affects the calculated line height.
 
 
-```Java
+```java
 $base-font-size: 16px; // Adjust the base font size
 
 @debug "Base Font Size: #{$base-font-size}";
@@ -895,7 +895,7 @@ Define a custom SASS function that uses a for loop in order to slightly decrease
 ![pixil-frame-0 (1)](https://github.com/Ant11234/student/assets/40652645/509214d6-bf1a-40f7-9028-cfd4b9f212da)
 
 
-```Java
+```java
 @function adjust-color($base-color, $step) {
     $adjusted-color: $base-color;
     $matrix: ();
