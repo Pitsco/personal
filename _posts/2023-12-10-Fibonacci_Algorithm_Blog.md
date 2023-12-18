@@ -8,6 +8,10 @@ courses: {'compsci': {'week': 13}}
 type: hacks
 ---
 
+# Frontend
+
+# Backend
+
 # FibonacciBase Abstract Class:
 
 
@@ -239,3 +243,42 @@ fibonacciStream.calculateFibonacci(num);
 In the Fibonacci class, instances of the concrete subclasses (FibonacciFor, FibonacciWhile, FibonacciRecursion, FibonacciStream) are created and assigned to variables of type FibonacciBase. This is possible because of the inheritance relationship; a subclass instance can be treated as an instance of its superclass.
 
 The calculateFibonacci method is then called on each instance, demonstrating polymorphism. The specific implementation of calculateFibonacci in each subclass is invoked based on the type of the object, allowing for flexibility and code reuse.
+
+# UserInput method
+
+
+```python
+private static int getUserInput() {
+    Scanner scanner = new Scanner(System.in); //scanner for number fo Fibonacci numbers user wants to input
+    System.out.print("Enter the number of Fibonacci numbers to generate: ");
+    int num;
+    while (true) {
+        try {
+            num = scanner.nextInt();
+            if (num > 0) {
+                break;
+            } else {
+                System.out.print("Please enter a positive integer: "); //asking only for positive integer
+            }
+        } catch (Exception e) {
+            System.out.print("Invalid input. Please enter a positive integer: "); //will catch invalid input such as negative number or letter
+            scanner.next(); //consume invalid input
+        }
+    }
+    scanner.close();
+    return num;
+}
+```
+
+This Java code defines a method named getUserInput that prompts the user to enter the number of Fibonacci numbers they want to generate. Here's the steps of the code:
+
+1. It creates a Scanner object to read input from the user.
+2. The user is prompted to enter the number of Fibonacci numbers to generate.
+3. The code uses a while loop to continuously prompt the user until a valid input is provided.
+
+### Within the loop:
+4. It attempts to read an integer from the user using scanner.nextInt().
+5. If the input is a positive integer (num > 0), the loop breaks.
+6. If the input is not a positive integer, an error message is displayed, and the user is prompted again.
+7. If an exception is caught (e.g., input is not an integer), an error message is displayed, and the invalid input is consumed using scanner.next() to prevent an infinite loop.
+8. After a valid input is obtained, the Scanner is closed, and the entered number is returned.

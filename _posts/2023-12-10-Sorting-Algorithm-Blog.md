@@ -6,6 +6,10 @@ courses: {'compsci': {'week': 13}}
 type: hacks
 ---
 
+# Frontend
+
+# Backend
+
 # Sorting Algorithms Class
 
 
@@ -298,55 +302,139 @@ public class SortingAlgs {
     public static void main(String[] args) {
         try {
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("https://dog-breeds2.p.rapidapi.com/dog_breeds"))
-                    .header("X-RapidAPI-Key", "48e23c6bf3msh9a6baf3e68d9a4ep14546ajsn1a39e98c4ad5")
-                    .header("X-RapidAPI-Host", "dog-breeds2.p.rapidapi.com")
+                    .uri(URI.create("https://covid-193.p.rapidapi.com/statistics"))
+                    .header("X-RapidAPI-Key", "1748ee8916mshe4a05c6edb7af0ap1399f4jsn23f82b0ddfa3")
+                    .header("X-RapidAPI-Host", "covid-193.p.rapidapi.com")
                     .method("GET", HttpRequest.BodyPublishers.noBody())
                     .build();
 
             HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+            // System.out.println(response.body());
+            // Parse the response body into an array of Covid objects
+            Covid[] unsortedcovids = parseResponse(response.body());
+            
+            for (Covid covid : unsortedcovids) {
+                System.out.println(covid);
+            }
+            // Create an instance of the sorting algorithm
+            SortingAlgorithm bubbleSortingAlgorithm = new BubbleSort();
 
-            DogBreed[] dogBreeds = parseResponse(response.body()); //parse the response body into an array of DogBreed objects
+            // Sort the array of dog breeds
+            Covid[] bubbleCovids = bubbleSortingAlgorithm.sort(unsortedcovids);
 
-            SortingAlgorithm sortingAlgorithm = new BubbleSort(); //create an instance of the sorting algorithm
+            // Display sorting statistics
+            System.out.println("Bubble");
+            bubbleSortingAlgorithm.displayStatistics();
 
-            sortingAlgorithm.sort(dogBreeds);//sort the array of dog breeds
+            SortingAlgorithm selectionSortingAlgorithm = new SelectionSort();
 
-            sortingAlgorithm.displayStatistics();//display sorting statistics
+            // Sort the array of dog breeds
+            Covid[] selectionCovids = selectionSortingAlgorithm.sort(unsortedcovids);
 
-            for (DogBreed breed : dogBreeds) {//print the sorted dog breeds
-                System.out.println(breed);
+            // Display sorting statistics
+            System.out.println("Selection");
+            selectionSortingAlgorithm.displayStatistics();
+
+            SortingAlgorithm mergSortingAlgorithm = new MergeSort();
+
+            // Sort the array of dog breeds
+            Covid[] mergeCovids = mergSortingAlgorithm.sort(unsortedcovids);
+
+            // Display sorting statistics
+            System.out.println("Merge");
+            mergSortingAlgorithm.displayStatistics();
+            
+
+            SortingAlgorithm insertionSortingAlgorithm = new InsertionSort();
+
+            // Sort the array of dog breeds
+            Covid[] insertionCovids = insertionSortingAlgorithm.sort(unsortedcovids);
+
+            // Display sorting statistics
+            System.out.println("Insertion");
+            insertionSortingAlgorithm.displayStatistics();
+            
+            // Print the sorted dog breeds
+            for (Covid deaths : insertionCovids) {
+                System.out.println(deaths);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+}
 ```
 
-- This is the main class containing the main method for testing sorting algorithms
-- It makes an HTTP request to fetch dog breeds, parses the response using parseResponse, and then tests the sorting algorithms with the fetched data
+This Java code fetches COVID-19 statistics from a RapidAPI endpoint, parses the response into an array of Covid objects, and then applies four different sorting algorithms (Bubble Sort, Selection Sort, Merge Sort, and Insertion Sort) to sort the array based on some criteria. The code uses a common interface called SortingAlgorithm, implemented by classes such as BubbleSort, SelectionSort, MergeSort, and InsertionSort. Each sorting algorithm has a sort method that takes an array of Covid objects and returns the sorted array. After sorting, the code prints the sorted array and displays statistics for each sorting algorithm, such as the number of comparisons and swaps performed during the sorting process. Additionally, it includes error handling using a try-catch block to handle any exceptions that might occur during the HTTP request or sorting process, printing the stack trace if an exception occurs. The code also contains commented-out lines that can be uncommented to print the raw response body received from the COVID-19 statistics API.
 
 # parseResponse Method:
 
 
 ```python
-private static DogBreed[] parseResponse(String responseBody) {//parse the response body into an array of DogBreed objects
-    String[] lines = responseBody.split("\n");
-    DogBreed[] dogBreeds = new DogBreed[lines.length];
-    for (int i = 0; i < lines.length; i++) {
-        String[] parts = lines[i].split(":");
-        int id = Integer.parseInt(parts[1]);
-        String breed = parts[3].replace("\"", "");
-        String origin = parts[5].replace("\"", "");
-        String url = parts[7].replace("\"", "");
-        String img = parts[9].replace("\"", "");
-        dogBreeds[i] = new DogBreed(id, breed, origin, url, img);
+
+private static Covid[] parseResponse(String responseBody) {
+    // Parse the response body into an array of Covid objects
+    // Example parsing logic: (You may need to adapt this based on the actual response format)
+    String[] lines = responseBody.split("continent");
+
+    // for (int i = 0; i < lines.length; i++) {
+    //     System.out.println("AAAAAAAAA"+lines[i]);
+    // }
+    Covid[] covids = new Covid[lines.length];
+    for (int i = 1; i < lines.length; i++) {
+        // System.out.println("AAAAAAAAA"+lines[i]);
+        String[] parts = lines[i].split(",");
+        // System.out.println(parts[1]);
+        // System.out.println(parts[2]);
+        // System.out.println(parts[8]);
+        // System.out.println(parts[11]);
+        // System.out.println(parts[13]);
+        String country = parts[1].replace("\"country\":", "");
+        // System.out.println(country);
+        String poptemp = parts[2].replace("\"population\":", "");
+        // System.out.println(poptemp);
+        if(poptemp.equals("null")){
+            poptemp = "0";
+        }
+        Integer population = Integer.parseInt(poptemp);
+        String casesTemp = parts[8].replace("\"total\":", "");
+        // System.out.println(casesTemp);
+        String casesm = casesTemp.substring(0, casesTemp.length()-1);
+        if(casesm.equals("null")){
+            casesm = "0";
+        }
+        Integer cases = Integer.parseInt(casesm);
+        // System.out.println(cases);
+        String deathsTemp = parts[11].replace("\"total\":", "");
+        // System.out.println(deathsTemp);
+        String deathsm = deathsTemp.substring(0, deathsTemp.length()-1);
+        if(deathsm.equals("null")){
+            deathsm = "0";
+        }
+        Integer deaths = Integer.parseInt(deathsm);
+        // System.out.println(deaths);
+        String testsTemp = parts[13].replace("\"total\":", "");
+        // System.out.println(testsTemp);
+        String testsm = testsTemp.substring(0, testsTemp.length()-1);
+        if(testsm.equals("null")){
+            testsm = "0";
+        }
+        Integer tests = Integer.parseInt(testsm);
+        // System.out.println(tests);
+        covids[i] = new Covid(country, population, cases, deaths, tests);
     }
-    return dogBreeds;
+    covids = Arrays.copyOfRange(covids, 1, covids.length);
+    return covids;
 }
+//test
 ```
 
-- parseResponse is a helper method to parse the response body (assumed to be in a specific format) into an array of DogBreed objects
+This Java code defines a method named parseResponse that takes a String responseBody as input, representing the response received from a COVID-19 statistics API. The method parses this response into an array of Covid objects. The parsing logic is based on splitting the response into lines and then further splitting each line into parts to extract relevant information such as country, population, total cases, total deaths, and total tests. The parsed information is used to create new instances of the Covid class.
 
-represents a framework for various sorting algorithms applied to a list of dog breeds obtained from an API. The sorting algorithms are implemented in separate classes, and their statistics are tracked for analysis. The main method serves as a testing ground for these sorting algorithms. The parseResponse method is responsible for converting the API response into an array of DogBreed objects.
+1. The response body is split into an array of lines using the "continent" as the delimiter.
+2. For each line (starting from index 1 to skip the first line), it is further split into parts using a comma as the delimiter.
+3. The necessary information (country, population, cases, deaths, tests) is extracted from specific parts of each line, removing unnecessary characters.
+4. Special handling is done for cases where certain fields may be "null" in the response, setting them to 0.
+5. The extracted information is converted to the appropriate data types (Integer) and used to create new instances of the Covid class.
+6. The resulting array of Covid objects is then trimmed to exclude the first element (initialized as null) and returned.
