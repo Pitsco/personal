@@ -49,7 +49,7 @@ Using a bookshelf organizer, you categorize books by genre, creating a system th
 Hash Maps are a **data structure** with keys and values; very similar to a Python dictionary. The keys in Hash Maps have a single value assigned to them, which can be accessed by calling the key: 
 
 
-```Java
+```java
 import java.util.HashMap;  //Hashmaps are part of the java.util package
 
 public class PlanetDistances {
@@ -83,7 +83,7 @@ As shown above, the data type of the keys and values must be defined when creati
 Keys in a Hashmap must be unique. Otherwise the previous values of the key get overwritten.
 
 
-```Java
+```java
 import java.util.HashMap;  
 
 public class ShoePrices {
@@ -113,7 +113,7 @@ In Java, you can use a Map where the key is associated with a collection, such a
 
 
 
-```Java
+```java
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.List;
@@ -150,7 +150,7 @@ HashMaps do not store the input order of the key-value pairs, and there is no gu
 **keySet()** -- provides access to the set of keys. Useful for if you only need to access keys w/out values 
 
 
-```Java
+```java
 import java.util.HashMap;
 import java.util.Set;
 
@@ -179,7 +179,7 @@ OscarWinners.main(null);
 **values()** -- returns set of values, without any keys 
 
 
-```Java
+```java
 import java.util.HashMap;
 import java.util.Set;
 
@@ -208,7 +208,7 @@ OscarWinners.main(null);
 **entryset()** -- returns keys and values in the form of objects. Useful for when working with key-value pair relationships
 
 
-```Java
+```java
 import java.util.HashMap;
 import java.util.Set;
 
@@ -242,7 +242,7 @@ HashMaps have a time complexity of O(1) on average!
 - A hashset is a data structure that stores only unique values and does not allow duplicates. You can also think of it as a set of keys with no values.  
 
 
-```Java
+```java
 import java.util.HashSet;
 import java.util.Set;
 
@@ -267,7 +267,7 @@ Colors.main(null);
 - If we try add duplicates, the hashset will simply not add the duplicate value and return false as seen bellow. 
 
 
-```Java
+```java
 public class ColorsButDifferent{
     static Set<String> colors = new HashSet<>();
 
@@ -292,7 +292,7 @@ ColorsButDifferent.main(null);
 - Hashsets are not ordered and do not store the order in which the values were added that means that if values are removed their order will not be preserved. 
 
 
-```Java
+```java
 public class Fruits{
     static Set<String> fruits = new HashSet<>();
 
@@ -319,7 +319,7 @@ Fruits.main(null);
 - You can use the contains method to check if a value is in a hashset.
 
 
-```Java
+```java
 public class Fruits{
     static Set<String> fruits = new HashSet<>();
 
@@ -346,7 +346,7 @@ Fruits.main(null);
 
 
 
-```Java
+```java
 public class Fruits{
     static Set<String> fruits = new HashSet<>();
 
@@ -386,7 +386,7 @@ Fruits.main(null);
 - These two methods are can be called using the `iterator()` and `forEach()` methods. For the `forEach()` method you can pass in a lambda expression (a lambda expression is an anonymous function) or a method reference.
 
 
-```Java
+```java
 // foreach loop to iterate through a set
 
 public class Fruits{
@@ -414,7 +414,7 @@ Fruits.main(null);
 
 
 
-```Java
+```java
 // Different version of foreach loop to iterate through a set
 
 public class Cheeses{
@@ -446,7 +446,7 @@ Cheeses.main(null);
 
 
 
-```Java
+```java
 // using iterator to iterate through a set
 
 import java.util.Iterator;
@@ -482,7 +482,7 @@ Games.main(null);
 - You can check if two hashsets are equal by using the `equals()` method. This method will return true if the hashsets contain the same values and false if they do not.
 
 
-```Java
+```java
 public class Pokemon {
     public static void main(String[] args) {
         Set<String> pokemonSet1 = new HashSet<>();
@@ -516,7 +516,7 @@ Pokemon.main(null);
 - The treeset is similar to the hashset but it sorts the values in ascending order.
 
 
-```Java
+```java
 // LinkedHashSet
 
 import java.util.LinkedHashSet;
@@ -553,7 +553,7 @@ LinkedHashSetExample.main(null);
 
 
 
-```Java
+```java
 // TreeSet
 import java.util.Set;
 import java.util.TreeSet;
@@ -596,7 +596,7 @@ After the first three tags, which specify to Lombok that `@AllArgsConstructor` a
 The `@Entity` tag indicates that Person objects will be stored as entities in a database. Generally, entities' attributes are represented by values in columns in the SQLite table.
 
 
-```Java
+```java
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -608,7 +608,7 @@ public class Person //...
 The `@Id` tag specifies to that this value will be used as the unique identifier for each object in the database, and `@GeneratedValue(strategy = GenerationType.AUTO)` allows these ID's to be automatically generated when a new Person is created. In order for data to be most easily differentiated and manipulated in a database, IDs are deeply important to use.
 
 
-```Java
+```java
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
 private Long id;
@@ -621,7 +621,7 @@ private Long id;
 JPA is a great asset when creating an SQL database because it can provide methods that help you modify its contents. If a specific object has a `JpaRepository` interface made that extends the base JPA repository, it allows you to access many useful JPA methods.
 
 
-```Java
+```java
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -655,7 +655,7 @@ Purpose: Executes a custom native SQL query to find persons whose name or email 
 You can create custom JPA queries that utilize SQL to serve a specific purpose outside of the existing JPA methods. See the example below from PersonJpaRepository.java:
 
 
-```Java
+```java
 @Query(
         value = "SELECT * FROM Person p WHERE p.name LIKE ?1 or p.email LIKE ?1",
         nativeQuery = true)
@@ -679,7 +679,7 @@ A "Many-to-Many" relationship (shown in the @ManyToMany tag) indicates that enti
 This condition allows for one object to be related to multiple different objects, and those different objects on the other side of the relationship can have their own relationship to other objects.
 
 
-```Java
+```java
 @ManyToMany(fetch = EAGER)
 private Collection<PersonRole> roles = new ArrayList<>();
 ```
@@ -711,7 +711,7 @@ The relationship between `Person` and `PersonRole` objects involves a `Person` h
 On the other hand, there is also a "Many-to-One" relationship that can exist between two objects. It means that multiple instances of one entity (the "many" side) are associated with a single instance of another entity (the "one" side). This can be seen applied to the `Note` object in relation to the `Person` object.
 
 
-```Java
+```java
 @ManyToOne(fetch = FetchType.LAZY, optional = false)
 @JoinColumn(name = "tutorial_id", nullable = false) // notice this!
 @OnDelete(action = OnDeleteAction.CASCADE)
@@ -733,7 +733,7 @@ The "tutorial_id" column, specified by the `@JoinColumn(name = "tutorial_id")`, 
 JSONB is a binary representation of JSON data. It is a data type used in some relational databases (such as SQL databases) to store JSON documents in a more efficient and flexible way compared to traditional JSON. Within SQL databases, this data from the JSON can often be filtered, searched and/or extracted using provided functions.
 
 
-```Java
+```java
 @JdbcTypeCode(SqlTypes.JSON)
 @Column(columnDefinition = "jsonb")
 private Map<String,Map<String, Object>> stats = new HashMap<>(); 
@@ -758,17 +758,17 @@ You can view the way this data is structured in the `person` sqlite.db table.
 
 ## Hacks
 This is what happens when I run the Person.java in terminal, replacing human with book (first five books of the harry potter series) and the email with the author (JK Rowling's email)
-![image.png](attachment:image.png)
+![hi](https://raw.githubusercontent.com/Pitsco/personal/main/images/hashmaphack1.png)
 
 ### SQLite Table:
-![image-2.png](attachment:image-2.png)
+![image-2.png](https://raw.githubusercontent.com/Pitsco/personal/main/images/hashmaphack2.png)
 
 I made a new one that contained the books with different book titles and emails. I had an issue with `@Column(unique=true)` as I didn't realize that if you had the same email, the table will not show information of other books with the same email. Therefore, I had to change the emails
 
 # Person.java code in person folder
 
 
-```Java
+```java
 package com.nighthawk.spring_portfolio.mvc.person;
 
 import java.text.SimpleDateFormat;
@@ -979,7 +979,7 @@ public class Person {
 # Person.java file in the classDataStruc Folder
 
 
-```Java
+```java
 package com.nighthawk.hacks.classDataStruct;
 
 import java.text.SimpleDateFormat;
