@@ -8,6 +8,213 @@ type: hacks
 
 # Frontend
 
+
+```python
+<script src="https://code.jscharting.com/latest/jscharting.js"></script>
+
+<div style="height: 650px;">
+    <div id="chartDiv" style="max-width: 640px; height: 650px; margin: 0 auto;">
+    </div>
+    <div class="container">
+        <label for="numberInput">Enter a number:</label>
+        <input type="number" id="numberInput" placeholder="Enter a number">
+        <button id="calculateButton" onclick="read_pull()">Calculate Fibonacci</button>
+        <title>Fibonacci - Live Updating Table</title>
+        <style>
+          table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px;
+          }
+      
+          table, th, td {
+            border: 1px solid black;
+          }
+      
+          th, td {
+            padding: 10px;
+            text-align: left;
+          }
+      
+          th {
+            background-color: #f2f2f2;
+          }
+        </style>
+      </head>
+      <body>
+      
+      <table id="loopTable">
+        <thead>
+          <tr>
+            <th>Name of Loop</th>
+            <th>Time Taken</th>
+            <th>Steps Taken</th>
+            <th>Final Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>For Loop</td>
+            <td id="forLoopTime">-</td>
+            <td id="forLoopSteps">-</td>
+            <td id="forLoopResult">-</td>
+          </tr>
+          <tr>
+            <td>While Loop</td>
+            <td id="whileLoopTime">-</td>
+            <td id="whileLoopSteps">-</td>
+            <td id="whileLoopResult">-</td>
+          </tr>
+          <tr>
+            <td>Recursion Loop</td>
+            <td id="recursionLoopTime">-</td>
+            <td id="recursionLoopSteps">-</td>
+            <td id="recursionLoopResult">-</td>
+          </tr>
+          <tr>
+            <td>Stream Loop</td>
+            <td id="streamLoopTime">-</td>
+            <td id="streamLoopSteps">-</td>
+            <td id="streamLoopResult">-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<script>
+    var chart = JSC.chart('chartDiv', { 
+        debug: true, 
+        type: 'horizontal column solid', 
+        title_label: { 
+            text: 'Time took to Run each Fibonacci Method',
+            style_fontWeight: 'bold',
+            position: 'top middle',
+            style_fontSize: 16 
+        }, 
+        legend_visible: true, 
+        legend_template: "%icon %name",
+        yAxis: { 
+            scale_range: { padding: 0.1, min: 0 }, 
+            orientation: 'opposite',
+            label_text: "Method",
+            label_style_fontWeight: 'bold'
+        }, 
+        xAxis: { 
+            defaultTick_label_width: 100, 
+            label_text: "Time",
+            label_style_fontWeight: 'bold',
+            crosshair: { 
+                enabled: true, 
+                gridLine_visible: false, 
+                outline_width: 0, 
+                label_style_fontWeight: 'bold'
+            } 
+        }, 
+        defaultSeries_palette: 'default', 
+        defaultPoint: { 
+            outline_width: 0, 
+            tooltip: '<b>%yValue</b>', 
+        }, 
+        defaultTooltip_label_text: '%points', 
+        series: makeSeries(getData()) 
+    }); 
+  
+    var chartData = getData();
+
+function makeSeries(data) {
+  return [
+    {
+      points: data.map(function (item) {
+        return {
+          name: item.type,
+          y: item.value,
+          method: item.name
+        };
+      })
+    }
+  ];
+}
+
+function updateChart(newData) {
+  // Update existing data with new data
+  chartData = chartData.concat(newData);
+
+  // Update chart series with the new data
+  chart.options({ series: makeSeries(chartData) });
+
+  // Redraw the chart
+  chart.update('modify', 'refresh');
+}
+
+function getData() {
+  return [
+
+  ];
+}
+</script>
+
+<script>
+const base_url = "http://localhost:8799/api/fibonacci/";
+
+function read_pull() {
+    const userFiboInput = document.getElementById("numberInput").value;
+    console.log(userFiboInput);
+
+    // set options for cross-origin header request
+    const authOptions = {
+        method: 'GET', // GET request 
+        mode: 'cors', // no-cors, cors, same-origin
+        cache: 'default', // default, no-cache, reload, force-cache, only-if-cached
+        // credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
+
+    // Fetch data for the "for" loop
+    fetch(base_url + "for/" + userFiboInput, authOptions)
+      .then(response => response.json())
+      .then(data => updateTableRow("forLoop", data));
+
+    // Fetch data for the "while" loop
+    fetch(base_url + "while/" + userFiboInput, authOptions)
+      .then(response => response.json())
+      .then(data => updateTableRow("whileLoop", data));
+
+    // Fetch data for the "recursion" loop
+    fetch(base_url + "recursion/" + userFiboInput, authOptions)
+      .then(response => response.json())
+      .then(data => updateTableRow("recursionLoop", data));
+
+    // Fetch data for the "stream" loop
+    fetch(base_url + "stream/" + userFiboInput, authOptions)
+      .then(response => response.json())
+      .then(data => updateTableRow("streamLoop", data));
+  }
+
+  function updateTableRow(loopName, data) {
+    document.getElementById(loopName + "Time").textContent = data.timeTaken;
+    document.getElementById(loopName + "Steps").textContent = data.intermediateSteps;
+    document.getElementById(loopName + "Result").textContent = data.fibonacciNumbers;
+  
+    updateChart([
+      {
+        type: 'Fibonacci (' + loopName + ')',
+        name: loopName,
+        value: data.timeTaken,
+      }
+      ]);
+  }
+</script>
+```
+
+The code above is our frontend and it features a chart at the top, created using the JSCharting library, similar to our fibonacci sorting program. It displays the execution time of various sorting algorithms. The chart is initialized with default settings and an empty dataset. Below the chart, there is an interactive data table with headers such as "Sort Type," "Iterations," "Comparisons," and more. This table is initially empty and will be populated dynamically.
+
+The JavaScript functions handle the fetching of sorting algorithm data from a specified API endpoint (base_url). The read_pull() function triggers the data fetching for different sorting algorithms, such as merge, insertion, selection, and bubble sorts. The fetched data is then used to populate a table row for each algorithm, updating both the HTML table and the chart simultaneously.
+
+The chart is designed to represent the execution time of each sorting algorithm on the horizontal axis, with each algorithm depicted as a separate column on the vertical axis. The updateChart() function is responsible for updating the chart with new data, and it is called after each new row is added to the data table.
+
 # Backend
 
 # Sorting Algorithms Class
