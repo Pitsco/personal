@@ -1,6 +1,14 @@
 ---
-
+title: JWT, Security Lesson
+description: JWT, Security Lesson
+layout: post
+courses: {'csa': {'week': 15}}
+categories: ['C4.0']
+type: tangibles
 ---
+
+<h1>JWT - Java, Security Lesson </h1>
+Period 1 - Emma, Vivian, Grace, Aliya, Kevin, Isabelle
 
 ## What is JWT
 - JSON Web Token (JWT)
