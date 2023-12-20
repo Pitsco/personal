@@ -17,7 +17,7 @@ The scripts can be executed in the context of a user's browser, leading to poten
 2. Session hijacking
 3. Defacing websites
 
-A term needed to know is **payload**: A "payload" refers to the malicious code or set of instructions that an perpetrator (attacker) delivers to a target system to achieve a specific objective, ex. stealing information from others.
+A term needed to know to understand XSS is **payload**: A "payload" refers to the malicious code or set of instructions that an perpetrator (attacker) delivers to a target system to achieve a specific objective, ex. stealing information from others.
 ### **Popcorn hack:**
 What are two other possible harms of XSS?
 
