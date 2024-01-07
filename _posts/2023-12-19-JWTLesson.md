@@ -228,11 +228,15 @@ JwtSignatureExample.main(null);
 <h3>Putting It Together</h3>
 
 Popcorn hack: write some comments that identify each part of the JWT
-- header
-- payload
-- signature
-- algorithm
-- secret key
+- Header: The header of a JWT contains metadata, specifying the token type and the signing algorithm chosen for securing the data.
+
+- Payload: At the core of the JWT, the payload holds encoded claims providing information about the user or entity, influencing authorization and other functionalities.
+
+- Signature: Ensuring the JWT's integrity, the signature is a cryptographic hash generated from the header, payload, and a secret key, allowing verification of the token's authenticity.
+
+- Algorithm: The algorithm, specified in the header, dictates the method used to generate the signature, impacting the security of the JWT and its suitability for different applications.
+
+- Secret Key: A confidential piece of information shared between parties, the secret key is crucial for generating and verifying the signature, ensuring the JWT's security in the authentication process.
 
 etc
 
@@ -323,6 +327,9 @@ Here is a diagram that makes it easier to understand the process tha happens bet
 - Now every time the user sends a request, the cookie with that corresponding ID gets send to the server which verifies the ID and sends back a response.
 
 Popcorn Hack: Create your own diagram to help visualize the JWT process
+
+![diagram](https://raw.githubusercontent.com/Pitsco/personal/main/images/JWTlessondiagram.png)
+
 
 <h2> JWT Walkthrough </h2>
 - Clone this repo and follow along in each JWT file: https://github.com/vivianknee/jwtlessonBackend.git
@@ -462,26 +469,26 @@ Additional Security Considerations
 
 ## Hacks
 1. Implementation 
-- Implement a simple authentication system using JWT with Java. Show how JWT works with postman. Get the request to be authorized
+- Implement a simple authentication system using JWT with Java. Show how JWT works with postman. Get the request to be authorized. [Link here](https://github.com/Pitsco/personal/issues/1)
 
 2. MC Knowledge test (5) 
     - Which part of the JWT contains the actual data (claims)? 
         - Header
-        - Payload
+        - **Payload**
         - Signature
         - Encryption
     - What is the purpose of the header in a JWT?
         - It contains the signature for the JWT.
-        - It identifies the algorithm used to generate the signature. 
+        - **It identifies the algorithm used to generate the signature.**
         - It holds the encrypted data. 
         - It contains the user's information.
     - How are the parts of a JWT (header, payload, and signature) separated?
         - Comma
-        - Period
+        - **Period**
         - Colon
         - Semicolon
     - Which algorithm is commonly used for JWT signatures?
-        - HMAC (Hash-based Message Authentication Code)
+        - **HMAC (Hash-based Message Authentication Code)**
         - RSA (Rivest-Shamir-Adleman)
         - AES (Advanced Encryption Standard)
         - MD5 (Message Digest Algorithm 5)
@@ -489,4 +496,4 @@ Additional Security Considerations
         - Only via HTTP headers
         - Only as query parameters in the URL
         - In the request body as JSON
-        - Any of the above, depending on the application
+        - **Any of the above, depending on the application**
