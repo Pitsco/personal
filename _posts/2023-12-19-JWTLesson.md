@@ -238,7 +238,20 @@ Popcorn hack: write some comments that identify each part of the JWT
 
 - Secret Key: A confidential piece of information shared between parties, the secret key is crucial for generating and verifying the signature, ensuring the JWT's security in the authentication process.
 
-etc
+### Specifically in the code: 
+Header (JwtHeaderExample):
+- Creates a JWT header with specified algorithm ("HS256") and type ("JWT").
+- Encodes the header using Base64 URL encoding.
+
+Payload (JwtPayloadExample):
+- Defines JWT claims (name, class, exp).
+- Converts claims to JSON format (placeholder method mapToJson).
+- Encodes the payload using Base64 URL encoding.
+
+Signature (JwtSignatureExample):
+- Uses a secret key to generate an HMAC SHA-256 signature.
+- Combines the Base64 URL-encoded header and payload.
+- Encodes the signature using Base64 URL encoding.
 
 
 ```java
