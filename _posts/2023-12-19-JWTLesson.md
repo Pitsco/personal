@@ -67,7 +67,7 @@ Decoded: algorithm, data, verify token hasn't been changed
 <span style="color:red;">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.<span style="color:purple;">eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.<span style="color:blue;">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 
 
-```java
+```Java
 // header
 {
     "alg": "HS256", //type of sign in algorithm used for encoding and decoding
@@ -79,7 +79,7 @@ Decoded: algorithm, data, verify token hasn't been changed
 - useful to signature type to decode
 
 
-```java
+```Java
 // payload
 {
 "sub": "123", //example of a registered claim
@@ -100,7 +100,7 @@ Decoded: algorithm, data, verify token hasn't been changed
 - exp/eat = expired at (date when toke becomes invalid)
 
 
-```java
+```Java
 //signature
 {
 HMACSHA256(
@@ -119,7 +119,7 @@ HMACSHA256(
 Header
 
 
-```java
+```Java
 import java.util.Base64;
 
 public class JwtHeaderExample {
@@ -149,7 +149,7 @@ JwtHeaderExample.main(null);
 Payload
 
 
-```java
+```Java
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
@@ -182,7 +182,7 @@ JwtPayloadExample.main(null);
 Signature
 
 
-```java
+```Java
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
@@ -254,7 +254,7 @@ Signature (JwtSignatureExample):
 - Encodes the signature using Base64 URL encoding.
 
 
-```java
+```Java
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import javax.crypto.Mac;
@@ -263,33 +263,49 @@ import javax.crypto.spec.SecretKeySpec;
 public class JwtGenerator {
 
     public static void main(String[] args) {
+        //secret key for encoding and decoding
         String secretKey = "yourSecretKey";
-        String subject = "userId123";
-        long expirationTimeMillis = System.currentTimeMillis() + 3600000;
 
+        //subject (user identifier) and expiration time for the JWT
+        String subject = "userId123";
+        long expirationTimeMillis = System.currentTimeMillis() + 3600000; // 1 hour expiration
+
+        //build the JWT
         String jwt = buildJwt(secretKey, subject, expirationTimeMillis);
 
+        //print the generated JWT
         System.out.println("Generated JWT: " + jwt);
     }
 
+    //build the JWT with header, payload, and signature
     private static String buildJwt(String secretKey, String subject, long expirationTimeMillis) {
+        //JWT Header
         String header = "{\"alg\":\"HS256\",\"typ\":\"JWT\"}";
+
+        //JWT Payload (Claims)
         String payload = "{\"sub\":\"" + subject + "\",\"iat\":" + System.currentTimeMillis() / 1000 +
                 ",\"exp\":" + expirationTimeMillis / 1000 + "}";
 
+        //base64 URL encode the header and payload
         String encodedHeader = base64UrlEncode(header);
         String encodedPayload = base64UrlEncode(payload);
 
+        //combine Base64 URL-encoded header and payload with a period '.'
         String dataToSign = encodedHeader + "." + encodedPayload;
+
+        //sign the data with the secret key to generate the signature
         String signature = signData(dataToSign, secretKey);
 
+        //combine the data, signature, and return the final JWT
         return dataToSign + "." + signature;
     }
 
+    //base64 URL encode the input string
     private static String base64UrlEncode(String input) {
         return Base64.getUrlEncoder().encodeToString(input.getBytes(StandardCharsets.UTF_8));
     }
 
+    //sign the data using HMAC SHA-256 with the provided secret key
     private static String signData(String data, String secretKey) {
         try {
             Mac sha256Hmac = Mac.getInstance("HmacSHA256");
@@ -306,7 +322,7 @@ public class JwtGenerator {
 JwtGenerator.main(null);
 ```
 
-    Generated JWT: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VySWQxMjMiLCJpYXQiOjE3MDMwMDE3OTIsImV4cCI6MTcwMzAwNTM5Mn0=.24Tvv71877-9AQjvv71I77-977-977-977-9WO-_ve-_ve-_ve-_vQXvv73vv71bGe-_ve-_ve-_vSHbue-_vQ==
+    Generated JWT: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VySWQxMjMiLCJpYXQiOjE3MDQ4MjI5NjcsImV4cCI6MTcwNDgyNjU2N30=.77-9V--_vQXvv71pQu-_vUbvv73vv71kD--_ve-_vTxG77-977-9Gwvvv73vv70477-977-9ae-_vWXvv73vv70=
 
 
 <h1> JWT with Spring Boot </h1>
@@ -407,7 +423,7 @@ Key Usage
 - Token Reception: When the client receives the token, the signature is validated using the key.
 
 
-```java
+```Java
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.Claims;
 
@@ -432,7 +448,7 @@ Symmetric vs. Asymmetric Key Approaches
 - Asymmetric Key: Different keys are used to sign and validate the token, only the authorization server has the ability to sign it.
 
 
-```java
+```Java
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jws;
