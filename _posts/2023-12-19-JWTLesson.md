@@ -67,7 +67,7 @@ Decoded: algorithm, data, verify token hasn't been changed
 <span style="color:red;">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.<span style="color:purple;">eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.<span style="color:blue;">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
 
 
-```Java
+```java
 // header
 {
     "alg": "HS256", //type of sign in algorithm used for encoding and decoding
@@ -79,7 +79,7 @@ Decoded: algorithm, data, verify token hasn't been changed
 - useful to signature type to decode
 
 
-```Java
+```java
 // payload
 {
 "sub": "123", //example of a registered claim
@@ -100,7 +100,7 @@ Decoded: algorithm, data, verify token hasn't been changed
 - exp/eat = expired at (date when toke becomes invalid)
 
 
-```Java
+```java
 //signature
 {
 HMACSHA256(
@@ -119,7 +119,7 @@ HMACSHA256(
 Header
 
 
-```Java
+```java
 import java.util.Base64;
 
 public class JwtHeaderExample {
@@ -149,7 +149,7 @@ JwtHeaderExample.main(null);
 Payload
 
 
-```Java
+```java
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
@@ -182,7 +182,7 @@ JwtPayloadExample.main(null);
 Signature
 
 
-```Java
+```java
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
@@ -254,7 +254,7 @@ Signature (JwtSignatureExample):
 - Encodes the signature using Base64 URL encoding.
 
 
-```Java
+```java
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import javax.crypto.Mac;
@@ -423,7 +423,7 @@ Key Usage
 - Token Reception: When the client receives the token, the signature is validated using the key.
 
 
-```Java
+```java
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.Claims;
 
@@ -448,7 +448,7 @@ Symmetric vs. Asymmetric Key Approaches
 - Asymmetric Key: Different keys are used to sign and validate the token, only the authorization server has the ability to sign it.
 
 
-```Java
+```java
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jws;
