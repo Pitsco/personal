@@ -62,6 +62,16 @@
             const emailField = document.getElementById("emailField");
             const passwordField = document.getElementById("passwordField");
 
+            const options = {
+    method: 'GET',
+    mode: 'cors',
+    credentials: 'include',  // Include credentials (e.g., cookies) in the request
+    headers: {
+        'Content-Type': 'application/json',
+    },
+};
+
+
             if (currentField === "emailField") {
                 currentField = "passwordField"
                 passwordField.style.display = "block";
