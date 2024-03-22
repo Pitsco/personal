@@ -50,6 +50,8 @@ comments: True
 # Techincal Examples:
 [Debugging Practice](https://github.com/Pitsco/personal/issues/7)
 
+
+
 [Deployment Practice and Reference](https://github.com/Pitsco/personal/issues/5)
 
 # Old References to Project Trimester 1: 
