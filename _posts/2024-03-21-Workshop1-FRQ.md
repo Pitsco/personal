@@ -45,7 +45,7 @@ These are just a few examples of methods provided by the Math class. There are m
 
 
 
-```Java
+```java
 public class SquareRootCalculator {
     public static double calculateSquareRoot(double number) {//method to calculate square root using Math class
         double squareRoot = Math.sqrt(number);//using Math.sqrt() method to calculate square root
@@ -135,7 +135,7 @@ Else statement should print out "y is not greater than 10" because the if statem
 ### Code:
 
 
-```Java
+```java
 public class GradeChecker {
     // Method to print "Pass" if score is >= 60, otherwise "Fail"
     public static void printGradeStatus(int score) {
