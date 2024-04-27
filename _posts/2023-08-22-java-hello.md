@@ -107,11 +107,13 @@ public class HelloDynamic { // name the first letter of class as capitalized, no
     public String getHello() {  // getter
         return this.hello;
     }
+    
     // public static void main(String[] args) is signature for main/drivers/tester method
     // a driver/tester method is singular or called a class method, it is never part of an object
     public static void main(String[] args) {  
         HelloDynamic hd1 = new HelloDynamic(); // no argument constructor
         HelloDynamic hd2 = new HelloDynamic("Hello, Nighthawk Coding Society!"); // one argument constructor
+        
         System.out.println(hd1.getHello()); // accessing getter
         System.out.println(hd2.getHello()); 
     }

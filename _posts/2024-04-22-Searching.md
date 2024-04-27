@@ -36,7 +36,7 @@ comments: True
 
 
 
-```Java
+```java
 // Write the answer here
 if (items[index] == num){
     return index;
@@ -47,7 +47,7 @@ if (items[index] == num){
 ![question2](https://raw.githubusercontent.com/Codemaxxers/codemaxxerblog/main/images/question2.png)
 
 
-```Java
+```java
 // Write the answer here
 ```
 
@@ -87,7 +87,7 @@ Return the position of key in arr or -1 if key is not in arr.
 Return true if key is in arr; otherwise, return false.
 
 
-```Java
+```java
 import java.util.ArrayList;
 
 public class LinearSearch {
@@ -149,7 +149,7 @@ public class LinearSearch {
 ```
 
 
-```Java
+```java
 // Example with Iterative Implementation
 LinearSearch.example1(null);
 ```
@@ -158,7 +158,7 @@ LinearSearch.example1(null);
 
 
 
-```Java
+```java
 // Example with Recursive Implementation
 LinearSearch.example2(null);
 ```
@@ -170,7 +170,7 @@ LinearSearch.example2(null);
 1. Implement linear search for an array list of integers
 
 
-```Java
+```java
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -244,7 +244,7 @@ Sorting Algorithms: Some sorting algorithms can be implemented recursively, alth
 
 
 
-```Java
+```java
 public class BinarySearch {
     static char[] arr = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
 
@@ -300,7 +300,7 @@ It iterations 3 times to find f.
 4. No keys can be the same, or else the old data is lost, and is replaced by the new one
 
 
-```Java
+```java
 import java.util.HashMap;
 
 public class HashMapSearching {
@@ -342,7 +342,7 @@ HashMapSearching.main(null);
 1. Create a method to delete data based off the key
 
 
-```Java
+```java
 import java.util.HashMap;
 
 public abstract class Collectable implements Comparable <Collectable> {
@@ -533,5 +533,48 @@ for(int i = 0; i < 20; i++) {
     }
 
 }
+
+
+```java
+public static int foo(int[] arr, int x) {
+
+    for(int i = 0; i < arr.length; i++) {
+
+        if(arr[i] == x) {
+
+            return i;
+
+        }
+
+    }
+
+    return -1;
+
+}
+
+//Given the method defined above, how many times is the word "Indubitably!" output by the code below?
+
+int[] vals = {1,4,51,3,14,91,130,14};
+
+for(int i = 0; i < 20; i++) {
+
+    if(foo(vals,i%4) < 0) {
+
+        System.out.println("Indubitably!");
+
+    }
+
+}
+```
+
+    Indubitably!
+    Indubitably!
+    Indubitably!
+    Indubitably!
+    Indubitably!
+    Indubitably!
+    Indubitably!
+    Indubitably!
+
 
 ### Answer: 10 times
