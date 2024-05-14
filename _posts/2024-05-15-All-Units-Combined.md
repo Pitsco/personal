@@ -783,20 +783,6 @@ This diagram was tricky for me to understand at first. Basically, it means that 
 ![image-3.png](attachment:image-3.png)
 
 
-### Example for Practice:
-
-!(A > B || B != A)
-
-(A <= B && B == A)
-
-### Another Example:
-
-!(A == B || (B >= C || B < A))
-
-(A != B && !(B >=C || B < A))
-
-(A != B && (B < C && B >= A))
-
 ## Checking Equality in Java:
 - Primitive data types are compared using (a == b)
 - Using == to compare two reference (object) type variables will only check if they are poitning at the same object
@@ -857,4 +843,1201 @@ ComparingObjects.main(null)
     true
 
 
+# Unit 4, Iteration and Loops:
+- For loops let us repeat a command or commands
+- each loop declares a varible that acts as a counter
+- counter variable will be progressed in the loop and can be used for various purposes
+
+
+```Java
+public class ForLoop {    
+    public static void main(String[] args){
+        for (int i = 0; i < 4; i ++){
+            System.out.println(i);
+        }
+    }
+}
+
+ForLoop.main(null);
+```
+
+    0
+    1
+    2
+    3
+
+
+## while loops do while loops
+- while loops repeat commands while a boolean expression remains true
+- Do While loops check boolean expressions at the end of the loop and at least will run once
+
+
+```Java
+public class WhileLoop { 
+    public static void main(String[] args){
+        int i = 4;
+        while (i > 0){
+            System.out.println(i);
+            i--;
+        }
+    }
+}
+
+WhileLoop.main(null);
+```
+
+## Reverse String
+
+
+```Java
+public class Reversestring{
+    public static void main(String[] args){
+        String original = "pupils";
+        String reverse = "";
+
+        for(int i = original.length() - 1; i >= 0; i--){
+            reverse = reverse + original.substring(i, i + 1);
+            System.out.println(reverse);
+        }
+        
+        System.out.println("Final reversed word: " + reverse);
+    }
+}
+
+Reversestring.main(null);
+```
+
+    s
+    sl
+    sli
+    slip
+    slipu
+    slipup
+    Final reversed word: slipup
+
+
+## Nested Loop
+- loop inside a loop
+- outer loop runs once, inner loop will go through entire cycle
+- Nested loops is helpful when it comes to 2D arrays
+
+
+```Java
+public class NestedLoop{
+    public static void main(String[] args){
+        for (int i = 0; i < 2; i++){ //loops 2 times
+            for (int j = 0; j< 3; j++){// loops 3 times
+                System.out.print("# "); 
+            }
+        }
+    }
+}
+
+NestedLoop.main(null);
+```
+
+    # # # # # # 
+
+# Unit 5, Classes and Objects:
+- In Object Oriengted Programming (OOP), Objects have both States and Behaviors
+
+### Example Dog Object:
+    - States:
+    1. color
+    2. isAwake
+    3. age
+
+    - Behaviors:
+    1. bark
+    2. run
+    3. eat
+
+### Class vs Object:
+- A class is a blue print (or template) for an object
+
+Static Methods:
+- Certain behaviors we can access without creating an object (instance)
+    - These are called static methods
+- Examples: public static void rotateWheel()
+    - public static void openHood()
+
+Non-Static Methods:
+- behaviors we can only access from an object 
+    - non-static methods
+    - public void turnOnEngine()
+    - public void drive()
+
+Class Variables (Static Fields):
+- States that bleong to the class are called class variables
+- Changing a class variable anywhere will change it everywhere
+- private static int wheelSize;
+- private static String vehicleType;
+
+Instance Variables (Non-static fields):
+- certain states that belong to the object
+- isntance variables
+- only an object mayu have a value for instance variables
+- don't have the word "static"
+- only change one place means it will only change in that instance
+
+- static method can only access variables
+- non-static method can access variables or instance variables
+- private means that it cant be directly access by other classes
+
+# Getter and Setter Methods (accessor and Mutator Methods):
+
+
+```Java
+public class Student {
+    private int studentID; //instance variable
+    private static String mascot; //class variable
+    //fields will automatically set their own values, for example studentID will default to 0
+    //private means that we can only access these variables in this class, not outside...
+
+    public int getStudentID(){
+        return studentID;
+    }
+
+    public void setStudentID(int newStudentID){
+        studentID = newStudentID;
+    }
+
+    public static String getMascot(){
+        return mascot;
+    }
+
+    public static void setMascot(String newMascot){
+        mascot = newMascot;
+    }
+}
+
+public class Highschool{
+    public static void main(String[] args){
+        Student derrick = new Student();
+        Student jonathan = new Student();
+        derrick.setMascot("Duke");
+        derrick.setStudentID(12345);
+        int derrickID = derrick.getStudentID();
+        int jonathanID = jonathan.getStudentID();
+        
+        System.out.println(derrick.getMascot());
+        System.out.println(Student.getMascot());
+        System.out.println(derrickID);
+
+    }
+}
+
+Highschool.main(null);
+```
+
+    Duke
+    Duke
+    12345
+
+
+# Method Overloading:
+- Must have the exact same name
+- Must have different numbers and/or types of parameters
+- Constructors can be overloaded
+
+Overloaded methods CAN'T have different...
+1. method names
+
+Overloaded methods CAN have different...
+1. return types
+2. visibility (i.e. public, private, etc..)
+3. static or non-static
+4. parameter names
+
+Overloaded methods MUST have different...
+1. numbers of parameters
+2. type of parameters
+3. Order OF the type of parameters(i.e. String & int vs int & String)
+
+
+
+# Java Constructor:
+- only activated when you create an instance of a class
+- behaves like a non-static method
+- Can set up a new object after the object is created
+
+
+```Java
+public class Robot {
+    private static String fuelSource;
+    private String name;
+
+    public Robot(){
+        fuelSource = "electricity";
+        randomName();
+    }
+
+    public void randomName(){
+        int randomNumber = (int)(Math.random()*3 + 1);
+
+        if (randomNumber == 1){
+            name = "Bender";
+        }
+
+        else if (randomNumber == 2){
+            name = "Hal 9000";
+        }
+
+        else {
+            name = "Gort";
+        }
+    }
+
+    public void setName(String newName) {
+        name = newName;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public static String getFuelSource(){
+        return fuelSource;
+    }
+
+    public static void setFuelSource(String newFuelSource){
+        fuelSource = newFuelSource;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Robot one = new Robot();
+        Robot two = new Robot();
+        Robot three = new Robot();
+        three.setFuelSource("derrick");
+        three.setName("lolz");
+        String poo = three.getName();
+        
+        System.out.println(poo);
+        System.out.println(three.getFuelSource());
+    }
+}
+
+Main.main(null);
+
+```
+
+    lolz
+    derrick
+
+
+# "this" keyword:
+- contains a pointer to whatever object it is currently in
+- does not need to be declared
+- can only be used for nonstatic methods or constructors
+
+## Specific uses for "this"
+- to specify a field over another variable of the same name
+- to call another constructor in the same class
+- to pass a copy of a pointer back to the current class
+
+
+```Java
+public class ThisKeyword {
+    private int x = 10;
+    private static int y = 0;
+
+    public void printX(){
+        int x = 5;
+        System.out.println(x);
+    }
+
+    public void setX(int x){
+        this.x = x;
+    }
+
+    public int getX(){
+        return x;
+    }
+
+    public void resetY(){
+        int y = 0;
+        this.y = y;
+    }
+
+    public static void main(String[] args){
+        ThisKeyword lolz = new ThisKeyword();
+        lolz.setX(3);
+        
+        lolz.printX();
+        int q = lolz.getX();
+        System.out.println(q);
+    }
+}
+
+ThisKeyword.main(null)
+```
+
+    5
+    3
+
+
+# Good Example found from java hello file:
+
+
+```Java
+// Define Class
+public class HelloDynamic { // name the first letter of class as capitalized, note camel case
+    // instance variable have access modifier (private is most common), data type, and name
+    private String hello;
+    // constructor signature 1, public and zero arguments, constructors do not have return type
+    public HelloDynamic() {  // 0 argument constructor
+        this.setHello("Hello, World!");  // using setter with static string
+    }
+    // constructor signature, public and one argument
+    public HelloDynamic(String hello) { // 1 argument constructor
+        this.setHello(hello);   // using setter with local variable passed into constructor
+    }
+    // setter/mutator, setter have void return type and a parameter
+    public void setHello(String hello) { // setter
+        this.hello = hello;     // instance variable on the left, local variable on the right
+    }
+    // getter/accessor, getter used to return private instance variable (encapsulated), return type is String
+    public String getHello() {  // getter
+        return this.hello;
+    }
+    
+    // public static void main(String[] args) is signature for main/drivers/tester method
+    // a driver/tester method is singular or called a class method, it is never part of an object
+    public static void main(String[] args) {  
+        HelloDynamic hd1 = new HelloDynamic(); // no argument constructor
+        HelloDynamic hd2 = new HelloDynamic("Hello, Nighthawk Coding Society!"); // one argument constructor
+        
+        System.out.println(hd1.getHello()); // accessing getter
+        System.out.println(hd2.getHello()); 
+    }
+}
+// IJava activation
+HelloDynamic.main(null);
+```
+
+    Hello, World!
+    Hello, Nighthawk Coding Society!
+
+
+# Scope and Lifetime:
+- Scope determines where in a program that a variable can be accessed
+- Lifetime determines when a object is created or destroyed in the memory
+- scope and lifetime is determiend when it is declared, not intialized
+
+
+```Java
+public class ScopeAndLifetime{
+    public static void main(String[] args){
+        int a = 3; //int a is declared and its scope is within the entire main method
+
+        if(true){
+            int b = 4; //int b is declared in the if statement so it's scope is within the if statement
+                       //it is destroyed when the if statement is dne executing
+        }
+
+        for (int c = 5; c < 8; c++){ //int c is only destroyed after the for loop is complete
+            int d = 6; //created everytime it runs through a cycle in for loop and destroyed right after
+        }
+    }
+}
+```
+
+## Example of in and out of scope:
+
+
+```Java
+public class ScopeAndLifetime {
+    public static void anotherMethod(){
+        System.out.println("a is out of scope!");
+    }
+    public static void main(String[] args){
+        int a = 3; //in scope
+        anotherMethod(); //when method is called, a is out of scope because it is not avaliable in another method
+        System.out.println(a); //now accessible since it is back in scope!
+    } //main method ends, a is destroyed
+}
+
+ScopeAndLifetime.main(null);
+```
+
+    a is out of scope!
+    3
+
+
+![image.png](attachment:image.png)
+
+
+```Java
+public class Train {
+    private String name;
+    private boolean isDiesel;
+    private int numPassengers;
+    
+    public Train(String newName, boolean newIsDiesel){
+        name = newName;
+        isDiesel = newIsDiesel;
+    }
+
+    public int addPassengers(int newPassengersToAdd){
+       return numPassengers += newPassengersToAdd;
+    }
+
+    public void unloadPassengers(){
+        System.out.println(numPassengers -= numPassengers);
+        
+    }
+
+    public static void main(String[] args){
+        Train newClass = new Train("Thomas", false);
+        int numberpoop = newClass.addPassengers(3);
+        System.out.println(numberpoop);
+        newClass.unloadPassengers();
+
+    }
+}
+
+Train.main(null);
+```
+
+    3
+    0
+
+
+# Unit 6, Using Arrays:
+- Arrays can hold 
+multiple values of the same data type
+- They are objects, but they hold either primitive types or reference types
+- Arrays in Java start at index 0
+
+
+```Java
+    int [] x = new int [4];
+    int [] y = {3, 5, 7, 2};
+
+    x[2] = 12;
+
+    //y[4] = 21; out of bounds error
+
+    System.out.println(y[3]);
+    
+    for (int i = 0; i < x.length; i++){
+    System.out.println(x[i]);
+        }
+
+```
+
+    2
+    0
+    0
+    12
+    0
+
+
+
+```Java
+public class Array2 {
+    public static void main(String[] args){
+        int a = 3;
+        int b = a;
+        b = 100;
+        
+        int [] c = {1, 2, 3, 4}; //pointed is located in stack, but the data of the array is located in the heap!!
+        int [] d = c; //same objects on the heap because d is set equal to c
+
+        d[1] = 99; //affects both objects
+        d = new int[5];
+
+        int [] e = {5, 6, 7, 8};
+        int [] f = {5, 6, 7, 8}; //separate objects on the heap!!
+        f[1] = 99;
+    }
+}
+
+Array2.main(null)
+```
+
+# Traversing an Array:
+- Arrays in Java start at 0
+- .length will return the number of indexes in an array
+- traverse an array with a For Loop or a For-Each Loop
+
+
+```Java
+int[] x = {2, 1, 5, 8};
+
+for (int i = 0; i < x.length; i += 2){
+    System.out.print(x[i] + " ");
+}
+
+// enhanced for loop, for each loop
+//can't skip indexes
+//can't modify data within array
+for (int t : x){
+    System.out.print(t + " ");
+}
+
+
+int sum = 0;
+for (int i = 0; i < x.length; i++){
+    x[i] *= 2;
+    sum += x[i];
+}
+
+System.out.println(sum);
+```
+
+    2 5 2 1 5 8 32
+
+
+# Reversing an array:
+- can be reversed by swapping values of the first half and the second half
+- values can also be swapped by copying values to the opposite index in a temporary array
+
+
+```Java
+public class Array {
+    public static void main(String[] args) {
+        int[] x = {4, 2, 6, 1, 7};
+
+        // Reverse the array
+        for (int i = 0; i < x.length / 2; i++) {
+            int temp = x[i]; //temp is set = 4
+            x[i] = x[x.length - i - 1]; // 4 is set equal to (5-0-1 = 4), which is 7
+            x[x.length - i - 1] = temp; //index 4 is set = 4
+        }
+
+        // Print the reversed array
+        for (int i = 0; i < x.length; i++) {
+            System.out.println(x[i]);
+        }
+    }
+}
+
+Array.main(null);
+```
+
+    7
+    1
+    6
+    2
+    4
+
+
+# Find the Largest Number in an Array:
+
+
+```Java
+public class FindLargest {
+    public static void main(String[] args) {
+        int[] anArray = {-2, 1, 6, -3, 10, 8};
+
+        int largest = anArray[0];
+
+        for (int i = 0; i < anArray.length; i++){
+            if (largest < anArray[i]){
+                largest = anArray[i];
+            }
+        }
+        System.out.println(largest);
+    }
+}
+
+FindLargest.main(null);
+```
+
+    10
+
+
+![image.png](attachment:image.png)
+
+
+```Java
+public class Example {
+
+    public int highestNumber(int[] numbers){//part a
+        int highestNumber = 0;
+        for (int i = 0; i < numbers.length; i++){
+            if (numbers[i] > highestNumber){
+                highestNumber = numbers[i];
+            }
+        }
+        return highestNumber;
+    }
+
+    public double averageNumber(double[] numbers){//part b
+        double sum = 0;
+        double totalNumbers = 0;
+        for (int i = 0; i < numbers.length; i++){
+            sum += numbers[i];
+            totalNumbers += 1;
+        }
+        return sum/totalNumbers;
+    }
+
+    public static void main(String[] args){
+        int[] numbers = {1, 3, 4, 7, 2};
+        double[] numbers2 = {1, 3, 4, 7, 2};
+        Example newClass = new Example();
+        System.out.println(newClass.highestNumber(numbers));
+        System.out.println(newClass.averageNumber(numbers2));
+
+    }
+}
+
+Example.main(null);
+
+```
+
+    7
+    3.4
+
+
+# Unit 7, Arraylists:
+
+
+```Java
+public class ArrayandArrayList {
+    public static void main(String[] args){
+        String[] fishArr = new String[4];
+        fishArr[0] = "trout";
+        fishArr[2] = "salmon";
+        fishArr[1] = "tuna";
+        fishArr[1] = "bass"; //overriding index 1
+
+        ArrayList<String> fishArrList = new ArrayList<>();
+        fishArrList.add("salmon");
+        fishArrList.add("trout");
+        fishArrList.add(1, "tuna");
+        fishArrList.set(1, "bass"); //overriding index 1
+        //fish.ArrayList.remove(1); remove index 1, everything slides down
+        String removedFish = fishArrList.remove(1); //setting the removed index equal to a new string; essentially storing the removed variable
+        String aFish = fishArrList.get(0); //setting a String at index 0 equal to a variable
+
+        for (int i = 0; i < fishArrList.size(); i++){
+            System.out.println(fishArrList.get(i));
+        }
+
+        System.out.println(fishArrList);
+    }
+}
+
+ArrayandArrayList.main(null)
+```
+
+    salmon
+    trout
+    [salmon, trout]
+
+
+
+```Java
+public class ArrayandArrayList {
+    public static void main(String[] args){
+        ArrayList<Integer> myNumbers = new ArrayList<>();
+        myNumbers.add(4);
+        myNumbers.get(0);
+    }
+}
+
+ArrayandArrayList.main(null)
+```
+
+## Traversing an ArrayList:
+- Arrays in Java start at 0
+- .length will return the number of indexes in an array
+- traverse an array with a For Loop or a For-Each Loop
+
+
+```Java
+ArrayList<Integer> nums = new ArrayList<>(Arrays.asList(3, 1, 8));
+
+for (int temp : nums) {
+    System.out.print(temp);
+}
+
+for (int i = 0; i < nums.size(); i++){
+    System.out.println(nums.get(i));
+    nums.remove(i);
+    i--;
+}
+
+
+System.out.println(nums);
+
+```
+
+    3183
+    1
+    8
+    []
+
+
+
+```Java
+public class ShoppingList {
+    private ArrayList<String> items;
+
+    public ShoppingList(ArrayList<String> newItemList) {
+        items = newItemList;
+    }
+
+    public ArrayList<String> removeAnItem(String itemToRemove) {
+        int count = 0;
+        ArrayList<String> removedItems = new ArrayList<String>();
+        for (int i = items.size() - 1; i >= 0; i--) {
+            if (items.get(i).equals(itemToRemove)) {
+                items.remove(i);
+                removedItems.add(itemToRemove);
+                count++;
+            }
+        }
+        return removedItems;
+    }
+
+    public static void main(String[] args){
+        ArrayList<String> newList = new ArrayList<>(Arrays.asList("Hello", "Hi"));
+        ShoppingList list = new ShoppingList(newList);
+        ArrayList<String> removed2Items = list.removeAnItem("Hello");
+        System.out.println(removed2Items);
+
+    }
+}
+
+ShoppingList.main(null)
+```
+
+    [Hello]
+
+
+# Converting Array to Arraylist:
+
+
+```Java
+public class ArrayToArrayList {
+    public static void main(String[] args){
+        int[] Array = {3, 6, 1, 7, 3, 1};
+        ArrayList<Integer> aNewList = new ArrayList<>();
+
+        for (int temp : Array){
+            aNewList.add(temp);
+        }
+        System.out.println(aNewList);
+    }
+}
+
+ArrayToArrayList.main(null)
+
+```
+
+    [3, 6, 1, 7, 3, 1]
+
+
+![image.png](attachment:image.png)
+![image-2.png](attachment:image-2.png)
+
+
+```Java
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Assignment {
+    private String name;
+    private String course;
+    private int daysUntilDue;
+    private String description;
+
+    public Assignment(String name, String course, int daysUntilDue, String desc){
+        this.name = name;
+        this.course = course;
+        this.daysUntilDue = daysUntilDue;
+        description = desc;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public String getCourse(){
+        return course;
+    }
+
+    public int getDaysUntilDue(){
+        return daysUntilDue;
+    }
+
+    public String getDescription(){
+        return description;
+    }
+}
+
+public class Agenda {
+    private ArrayList<Assignment> assignments;
+
+    public Agenda(){
+        assignments = new ArrayList<>();
+    }
+
+    public void addToAgenda(Assignment assignment){
+        int currentDaysUntilDue = assignment.getDaysUntilDue();
+        int indexToInsert = 0;
+    
+        // Find the correct index to insert the assignment based on daysUntilDue
+        for (int i = 0; i < assignments.size(); i++){
+            Assignment currentAssignment = assignments.get(i);
+            if (currentDaysUntilDue < currentAssignment.getDaysUntilDue()){
+                indexToInsert = i;
+                break; // Found the correct index, exit the loop
+            }
+        }
+    
+        // Insert the assignment at the correct index
+        assignments.add(indexToInsert, assignment);
+    }
+    
+
+    public static void main(String[] args){
+        Assignment newAssignment = new Assignment("SampleName1", "APCS", 6, "");
+
+        Agenda newClass = new Agenda();
+        newClass.addToAgenda(newAssignment);
+    }
+}
+
+Agenda.main(null)
+```
+
+# Unit 8, 2D Arrays:
+- declaring a 2d array:
+``` cs
+int[][] varName = new int[3][4]
+```
+
+- first bracket = rows;
+- second bracket = column;
+- columns are stored in rows
+
+
+```Java
+int[][] varName = new int[3][4];
+int[][] varName2 = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};
+
+System.out.println(varName2[0][2]);
+
+//array.length = # of rows
+//array[0].length = # of colums
+
+for (int i = 0; i < varName2.length; i++){
+    for (int j = 0; j < varName2[i].length; j++){//traverses array from top left to bottom right
+        System.out.println(varName2[i][j]);
+    }
+}
+
+System.out.println("Traversing:");
+for (int i = varName2.length - 1; i >= 0; i--){
+    for (int j = varName2[i].length - 1; j >= 0; j--){
+        System.out.println(varName2[i][j]);
+    }
+}
+```
+
+    3
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    Traversing:
+    9
+    8
+    7
+    6
+    5
+    4
+    3
+    2
+    1
+
+
+
+```Java
+int[][] varName2 = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};
+
+
+System.out.println("Traversing with enhanced for loop: ");
+for (int[] row: varName2){
+    for (int val: row) {
+        System.out.println(val);
+    }
+}
+```
+
+    Traversing with enhanced for loop: 
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+
+
+![image.png](attachment:image.png)
+
+
+```Java
+public class BattleField {
+    private boolean[][] battlefieldGrid;
+
+    public BattleField(boolean[][] battlefieldnew) {
+        battlefieldGrid = battlefieldnew;
+    }
+
+    public boolean hasMine(int row, int col){
+        for (int i = 0; i < battlefieldGrid.length; i++){
+            for (int j = 0; j < battlefieldGrid[i].length; j++){
+                if (battlefieldGrid[row][col] == true){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean canSafetlyCross(int rowToCross){
+        for (int i = 0; i < battlefieldGrid.length; i++){
+            if (hasMine(rowToCross, i) == true){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args){
+        boolean[][] hello = {
+            {true, true, false, false, false},
+            {false, true, false, false, false},
+            {false, false, false, false, false},
+            {true, false, false, true, false},
+            {true, true, false, false, false}
+
+        };
+
+        BattleField newClass = new BattleField(hello);
+        boolean hellonew = newClass.hasMine(3,4);
+        boolean helloold = newClass.canSafetlyCross(2);
+        System.out.println(hellonew);
+        System.out.println(helloold);
+    }
+}
+
+BattleField.main(null)
+
+```
+
+    false
+    true
+
+
+# Unit 9, Inheritance:
+- idea of a class "inheriting" properties from another class
+
+### Ex:
+- Vehicle Class
+- A car is a type of vehicle
+    - more of a "specialized vehicle"
+- Bus
+    - color could be a unique factor
+- Train
+    - Steam Engine Train
+    - Diesel Engine Train
+
+- you have a basic model that basic features such as engine, or color that all vehicles can inherit
+- **Constructors are not inherited!**
+    - Remember, constructors must be the name of the class, so if a constructor is "inherited", its class and the constructor name will not be the same!
+
+- they may have special features
+
+Hiearchy is created in this example.
+
+- Superclass will give everytrhing below in the hiearchy is refered to the subclass
+
+### Continued Example:
+**Class Vehicle:**
+- Name (String)
+- make (String)
+- model (String)
+- Constructor: Vehicle (...)
+- Method: moveForward()
+
+**Class Vehicle is the superclass of class Train**
+
+**class Train:**
+- Name (String)
+- make (String)
+- model (String)
+- Constructor: Train (...) //we would change this to Train instead of vehicle!
+- Method: moveForward()
+
+*new addition:*
+- Conductor (String) //doesn't carry to the vehicle class, conductor is a **SUBCLASS** of vehicle class
+- moveFoward() method is still called the same thing, but we want to change the code inside it
+    - this is called overwriting!
+    - Overwriting: Changing the subclass body of a method that is inherited from a superclass
+
+**Class Train is the superclass of class DieselEngineTrain**
+
+**class DieselEngineTrain:**
+- Name (String)
+- make (String)
+- model (String)
+- Constructor: DiselEngineTrain: (...) //we would change this to DieselEngineTrain instead of Train!
+- Method: moveForward() //inherit the overwritten method!
+- Conductor (String)
+
+
+*new addition:*
+- oilLevel (double) //additional field added
+
+
+```Java
+//structure of example above
+
+class Vehicle {
+    public String name;
+    public String make;
+    public String model;
+
+    public Vehicle(...) {
+        //implentation not shown
+    }
+}
+
+class Train extends Vehicle {
+    public String conductor;
+
+    public Train(...){
+        //implenatation not shown
+    }
+
+    public void moveFoward(){
+        //do something else
+    }
+}
+
+class DieselEngineTrain extends Train {
+    public double oilLevel;
+
+    public DieselEngineTrain(...){
+        //implementation not shown
+    }
+}
+
+//super(params) --> accesses the superclass's constructor
+```
+
+
+    |       public Vehicle(...) {
+
+
+    illegal start of type
+
+
+    
+
+
+    |       public Vehicle(...) {
+
+
+    <identifier> expected
+
+
+
+![image.png](attachment:image.png)
+
+1. C
+2. C
+3. A
+4. A
+5. C
+6. D
+7. F
+8. D
+9. H //should be F
+
+8/9
+
+
+# Unit 10, Recursion:
+- The idea of a method running itself inside of itself.
+
+
+
+```Java
+int n = 5;
+public static int product(int n){
+    if (n <= 1){
+        return 1;
+    }
+    else {
+        return n * product(n-2);
+    }
+}
+//iteration 1: product(int 5) = 5 * product(3) = 15;
+//iteration 2: product(int 3) = 3 * product(1) = 3;
+//iteration 3: product(int 1) = 1;
+
+System.out.println(product(5));
+```
+
+    15
+
+
+
+```Java
+public static int f(int n){
+    if (n == 0){
+        return 0;
+    }
+
+    else if (n == 1){
+        return 1;
+    }
+
+    else {
+        return f(n-1) + f(n-2);
+    }
+
+    //iteration 1: f(5) = f(4) + f(3);
+    //iteration 2: f(4) = f(3) + f(2);
+    //f(3) = f(2) + f(1) or f(3) = f(2) + 1;
+    //f(2) = f(1) + f(0);
+    //f(2) = 1 + 0 = 1;
+
+
+    //reversing back...
+    //f(3) = 1 + 1 = 2;
+    //f(4) = 2 + 1 = 3;
+    //f(5) = 3 + 2 = 5;
+}
+
+System.out.println(f(5));
+```
+
+    5
 
