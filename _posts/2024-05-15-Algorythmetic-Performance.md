@@ -23,5 +23,5 @@ I thought this theme of the bacheleorte was very intersting and creative. I love
 I loved how this performance was like a play almost and I thought it was really creative. They had very creative lines I wish we couldn've modeled their performance a little more with more active lines.
 | 1 | 2 |
 | --- | --- |
-| [Practice Video](https://www.youtube.com/watch?v=FyDWarOKnFU) | [Performance Video](https://www.youtube.com/watch?v=-2_5y01plFk)|
+| [Practice Video](https://www.youtube.com/watch?v=FyDWarOKnFU), [Specific Practice #1](https://drive.google.com/file/d/1TOLTBjX-MJNuXB9ZglD9uXXjq7wbXTfb/view) | [Performance Video](https://www.youtube.com/watch?v=-2_5y01plFk)|
 

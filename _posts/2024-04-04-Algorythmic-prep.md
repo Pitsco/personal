@@ -283,167 +283,191 @@ TList.main(null)
     11 12 22 25 34 64 90 
 
 
+### Linked List:
+-  Insertion and deletion operations can be faster than ArrayList in certain scenarios, especially when adding or removing elements from the middle of the list. This is because linked lists only require updating references, while ArrayList may need to shift elements to accommodate changes.
+- However, accessing elements by index in a linked list is slower compared to ArrayList because you have to traverse the list from the beginning to reach the desired position.
+### ArrayList:
+- Accessing elements by index is very fast in ArrayList because it provides constant-time access to any element.
+- However, insertion and deletion operations may be slower, especially for large lists, as they may require shifting a significant portion of the array to accommodate changes.
+
 
 ```Java
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
 class Node<T extends Comparable<T>> {
-    T data;
-    Node<T> next;
+    T data; // Data value of the node
+    Node<T> next; // Reference to the next node in the list
 
+    // Constructor to initialize the node with data
     public Node(T data) {
         this.data = data;
         this.next = null;
     }
-}
-
-class LinkedList<T extends Comparable<T>> {
-    private Node<T> head;
-    private int size;
-
-    public LinkedList() {
-        this.head = null;
-        this.size = 0;
-    }
-
-    public void add(T data) {
-        Node<T> newNode = new Node<>(data);
-        if (head == null) {
-            head = newNode;
-        } else {
-            Node<T> current = head;
-            while (current.next != null) {
-                current = current.next;
-            }
-            current.next = newNode;
-        }
-        size++;
-    }
-
-    public void sort() {
-        if (size <= 1) return;
-        boolean swapped;
-        do {
-            swapped = false;
-            Node<T> current = head;
-            while (current.next != null) {
-                if (current.data.compareTo(current.next.data) > 0) {
-                    T temp = current.data;
-                    current.data = current.next.data;
-                    current.next.data = temp;
-                    swapped = true;
-                }
-                current = current.next;
-            }
-        } while (swapped);
-    }
 
     @Override
     public String toString() {
-        StringBuilder json = new StringBuilder("[");
-        Node<T> current = head;
+        return data.toString();
+    }
+
+    //overriding toString method from object class because it will return something like this Node@6d06d69c instead of the actual string
+}
+
+class LinkedList<T extends Comparable<T>> {
+    Node<T> head; // Reference to the first node of the linked list
+    Function<Node<T>, Comparable> keyExtractor; //function used to extract a key node in linked list
+
+    public LinkedList() {
+        this.head = null; // Initializes an empty linked list
+        this.keyExtractor = node -> node.data; // Lambda expression, default key extractor, takes a single parameter "node" and returns the value stored in that node
+    }
+
+    public void insert(T data) {
+        Node<T> newNode = new Node<>(data); // Create a new node with the given data
+        if (head == null) {
+            head = newNode; // If the list is empty, the new node becomes the head
+        } 
+        
+        else {
+            Node<T> current = head;
+            while (current.next != null) { // Traverse to the end of the list
+                current = current.next;
+            }
+            current.next = newNode; // Link the last node to the new node
+        }
+
+        // In the insert method, a new node is created with the given data, and if the list is empty (i.e., head is null), the new node becomes the head
+        // Otherwise, the new node is appended to the end of the list by traversing to the last node and setting its next reference to the new node
+
+        // ex. myList.insert(5); 
+        // Linked List: 
+        // 5
+
+        // myList.insert(10); 
+        // Linked List:
+        // 5 -> 10
+
+        // myList.insert(15);
+        // Linked List:
+        // 5 -> 10 -> 15
+    }
+
+    public void display() {
+        Node<T> current = head; // Start from the head
         while (current != null) {
-            json.append("{\"data\": \"").append(current.data).append("\"},");
-            current = current.next;
+            System.out.print(current + " "); // Print the data of each node
+            current = current.next; // Move to the next node
         }
-        if (json.length() > 1) {
-            json.setLength(json.length() - 1);
+        System.out.println(); // Move to the next line after printing all nodes
+    }
+
+
+    public void mergeSort() {
+        head = mergeSort(head);
+    }
+    
+    private Node<T> mergeSort(Node<T> head) {
+        if (head == null || head.next == null) {
+            return head; // Base case (basically like the stopper in recursion methods. If this didn't exist then the recursion method will continue on forever...)
+                         // Method will stop when list is empty or has only one node
         }
-        json.append("]");
-        return json.toString();
+        
+        // Split the list into two halves
+        Node<T> middle = getMiddle(head);
+        Node<T> nextOfMiddle = middle.next;
+        middle.next = null;
+
+        // Recursively sort the two halves
+        Node<T> left = mergeSort(head);
+        Node<T> right = mergeSort(nextOfMiddle);
+
+        // Merge the sorted halves
+        return merge(left, right);
+    }
+
+    private Node<T> merge(Node<T> left, Node<T> right) {
+        Node<T> result = null;
+        
+        if (left == null) {
+            return right;
+        }
+        if (right == null) {
+            return left;
+        }
+
+        // Compare data values to determine the order
+        if (keyExtractor.apply(left).compareTo(keyExtractor.apply(right)) <= 0) {
+            result = left;
+            result.next = merge(left.next, right);
+        } 
+        
+        else {
+            result = right;
+            result.next = merge(left, right.next);
+        }
+
+        return result;
+    }
+
+    // Method to change the sort key extractor
+    public void changeSortKey(Function<Node<T>, Comparable> keyExtractor) {
+        this.keyExtractor = keyExtractor;
+    }
+
+    private Node<T> getMiddle(Node<T> head) {
+        if (head == null) {
+            return head;
+        }
+
+        Node<T> slow = head, fast = head;
+
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow;
     }
 }
 
 public class Main {
     public static void main(String[] args) {
         LinkedList<Integer> list = new LinkedList<>();
-        list.add(5);
-        list.add(3);
-        list.add(8);
-        list.add(1);
-        
-        System.out.println("Original List: " + list);
-        
-        list.sort();
-        System.out.println("Sorted List: " + list);
+        list.insert(5);
+        list.insert(4);
+        list.insert(7);
+        list.insert(2);
+        list.insert(6);
+        list.insert(3);
+        list.insert(1);
+        list.insert(8);
+        list.insert(9);
+
+        System.out.println("Before sorting:");
+        list.display();
+
+        long startTime = System.nanoTime();
+        list.mergeSort(); 
+        long endTime = System.nanoTime(); 
+
+        double duration = (endTime - startTime) / 1e6; // Convert nanoseconds to milliseconds
+
+        System.out.println("After sorting by data:");
+        list.display(); // Display the list after sorting
+
+        System.out.println("Time taken to sort: " + duration + " milliseconds");
+
+        list.changeSortKey(node -> node.next != null ? node.next.data : Integer.MAX_VALUE); // Change sorting key to the next node's data
+
+        startTime = System.nanoTime(); 
+        list.mergeSort();
+        endTime = System.nanoTime(); 
+
+        duration = (endTime - startTime) / 1e6; // Convert nanoseconds to milliseconds
+
+        System.out.println("After sorting by next node's data:");
+        list.display(); 
+
+        System.out.println("Time taken to sort by next node's data: " + duration + " milliseconds");
     }
 }
 
 Main.main(null)
 ```
-
-    Original List: [{"data": "5"},{"data": "3"},{"data": "8"},{"data": "1"}]
-    Sorted List: [{"data": "1"},{"data": "3"},{"data": "5"},{"data": "8"}]
-
-
-
-```Java
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-public class CustomList<T extends Comparable<T>> extends ArrayList<T> {
-
-    // Constructor
-    public CustomList() {
-        super();
-    }
-
-    // Performance sort method
-    public void performanceSort() {
-        Collections.sort(this);
-    }
-
-    // Override toString method to return JSON representation
-    @Override
-    public String toString() {
-        StringBuilder json = new StringBuilder("[");
-        for (int i = 0; i < size(); i++) {
-            json.append("{")
-                .append("\"index\": ").append(i).append(", ")
-                .append("\"value\": \"").append(get(i)).append("\"")
-                .append("}");
-            if (i < size() - 1) {
-                json.append(", ");
-            }
-        }
-        json.append("]");
-        return json.toString();
-    }
-}
-
-public class Tester {
-    public static void main(String[] args) {
-        CustomList<String> list = new CustomList<>();
-        list.add("banana");
-        list.add("apple");
-        list.add("cherry");
-
-        System.out.println("Original List:");
-        System.out.println(list);
-
-        // Sort by default (alphabetical order)
-        list.performanceSort();
-        System.out.println("\nSorted List (default):");
-        System.out.println(list);
-
-        // Sort by length
-        list.sort((s1, s2) -> s1.length() - s2.length());
-        System.out.println("\nSorted List (by length):");
-        System.out.println(list);
-    }
-}
-
-Tester.main(null)
-```
-
-    Original List:
-    [{"index": 0, "value": "banana"}, {"index": 1, "value": "apple"}, {"index": 2, "value": "cherry"}]
-    
-    Sorted List (default):
-    [{"index": 0, "value": "apple"}, {"index": 1, "value": "banana"}, {"index": 2, "value": "cherry"}]
-    
-    Sorted List (by length):
-    [{"index": 0, "value": "apple"}, {"index": 1, "value": "banana"}, {"index": 2, "value": "cherry"}]
-
