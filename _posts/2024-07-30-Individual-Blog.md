@@ -47,9 +47,6 @@ comments: True
 
 [Overall Issue (Connection to PBL)](https://github.com/Pitsco/personal/issues/6)
 
-# Self Study for AP Exam Material:
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -108,7 +105,6 @@ comments: True
         </tbody>
     </table>
 </body>
-</html>
 
 # Techincal Examples:
 [Debugging Practice](https://github.com/Pitsco/personal/issues/7)
