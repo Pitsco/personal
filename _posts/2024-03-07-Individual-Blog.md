@@ -58,3 +58,5 @@ comments: True
 [Fibonacci Algorithms, Frontend and Backend with Explanations](https://pitsco.github.io/personal/2023/12/10/Fibonacci_Algorithm_Blog.html)
 
 [Sorting Algorithms, Frontend and Backend with Explanations](https://pitsco.github.io/personal/2023/12/10/Sorting-Algorithm-Blog.html)
+
+# [Machine Learning References](https://github.com/Pitsco/personal/issues/8)

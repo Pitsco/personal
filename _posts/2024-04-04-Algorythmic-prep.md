@@ -47,7 +47,7 @@ comments: True
 # Code in Demostration with Generic T Lists (Collectables):
 
 
-```Java
+```java
 public class TList<T extends Comparable<T>> { // Defining a generic class TList with a type parameter T that extends Comparable<T>
     private List<T> list; // List to store elements of type T
     
@@ -291,10 +291,12 @@ TList.main(null)
 - However, insertion and deletion operations may be slower, especially for large lists, as they may require shifting a significant portion of the array to accommodate changes.
 
 
-```Java
+```java
+import java.util.function.Function;
+
 class Node<T extends Comparable<T>> {
-    T data; // Data value of the node
-    Node<T> next; // Reference to the next node in the list
+    T data;
+    Node<T> next;
 
     // Constructor to initialize the node with data
     public Node(T data) {
@@ -302,128 +304,82 @@ class Node<T extends Comparable<T>> {
         this.next = null;
     }
 
+    // Override toString method to display the data value of the node
     @Override
     public String toString() {
         return data.toString();
     }
-
-    //overriding toString method from object class because it will return something like this Node@6d06d69c instead of the actual string
 }
 
 class LinkedList<T extends Comparable<T>> {
-    Node<T> head; // Reference to the first node of the linked list
-    Function<Node<T>, Comparable> keyExtractor; //function used to extract a key node in linked list
+    Node<T> head;
+    Function<Node<T>, Comparable> keyExtractor;
 
+    // Constructor to initialize an empty linked list
     public LinkedList() {
-        this.head = null; // Initializes an empty linked list
-        this.keyExtractor = node -> node.data; // Lambda expression, default key extractor, takes a single parameter "node" and returns the value stored in that node
+        this.head = null;
+        // Default key extractor, extracts data value from the node
+        this.keyExtractor = node -> node.data;
     }
 
+    // Method to insert a new node with given data
     public void insert(T data) {
-        Node<T> newNode = new Node<>(data); // Create a new node with the given data
+        Node<T> newNode = new Node<>(data);
         if (head == null) {
-            head = newNode; // If the list is empty, the new node becomes the head
-        } 
-        
-        else {
+            head = newNode;
+        } else {
             Node<T> current = head;
-            while (current.next != null) { // Traverse to the end of the list
+            // Traverse to the end of the list
+            while (current.next != null) {
                 current = current.next;
             }
-            current.next = newNode; // Link the last node to the new node
+            // Link the last node to the new node
+            current.next = newNode;
         }
-
-        // In the insert method, a new node is created with the given data, and if the list is empty (i.e., head is null), the new node becomes the head
-        // Otherwise, the new node is appended to the end of the list by traversing to the last node and setting its next reference to the new node
-
-        // ex. myList.insert(5); 
-        // Linked List: 
-        // 5
-
-        // myList.insert(10); 
-        // Linked List:
-        // 5 -> 10
-
-        // myList.insert(15);
-        // Linked List:
-        // 5 -> 10 -> 15
     }
 
+    // Method to display the linked list
     public void display() {
-        Node<T> current = head; // Start from the head
+        Node<T> current = head;
+        // Start from the head and print the data of each node
         while (current != null) {
-            System.out.print(current + " "); // Print the data of each node
-            current = current.next; // Move to the next node
+            System.out.print(current + " ");
+            current = current.next;
         }
         System.out.println(); // Move to the next line after printing all nodes
     }
 
+    // Bubble sort implementation for sorting the linked list
+    public void bubbleSort() {
+        if (head == null || head.next == null)
+            return;
 
-    public void mergeSort() {
-        head = mergeSort(head);
-    }
-    
-    private Node<T> mergeSort(Node<T> head) {
-        if (head == null || head.next == null) {
-            return head; // Base case (basically like the stopper in recursion methods. If this didn't exist then the recursion method will continue on forever...)
-                         // Method will stop when list is empty or has only one node
-        }
-        
-        // Split the list into two halves
-        Node<T> middle = getMiddle(head);
-        Node<T> nextOfMiddle = middle.next;
-        middle.next = null;
+        boolean swapped;
+        Node<T> last = null;
 
-        // Recursively sort the two halves
-        Node<T> left = mergeSort(head);
-        Node<T> right = mergeSort(nextOfMiddle);
+        // Continue the loop until no swaps are needed
+        do {
+            swapped = false;
+            Node<T> current = head;
 
-        // Merge the sorted halves
-        return merge(left, right);
-    }
-
-    private Node<T> merge(Node<T> left, Node<T> right) {
-        Node<T> result = null;
-        
-        if (left == null) {
-            return right;
-        }
-        if (right == null) {
-            return left;
-        }
-
-        // Compare data values to determine the order
-        if (keyExtractor.apply(left).compareTo(keyExtractor.apply(right)) <= 0) {
-            result = left;
-            result.next = merge(left.next, right);
+            // Traverse the list and swap adjacent elements if they are in the wrong order
+            while (current.next != last) {
+                if (current.data.compareTo(current.next.data) > 0) {
+                    swap(current, current.next);
+                    swapped = true;
+                }
+                current = current.next;
+            }
+            last = current;
         } 
-        
-        else {
-            result = right;
-            result.next = merge(left, right.next);
-        }
-
-        return result;
+        while (swapped);
     }
 
-    // Method to change the sort key extractor
-    public void changeSortKey(Function<Node<T>, Comparable> keyExtractor) {
-        this.keyExtractor = keyExtractor;
-    }
-
-    private Node<T> getMiddle(Node<T> head) {
-        if (head == null) {
-            return head;
-        }
-
-        Node<T> slow = head, fast = head;
-
-        while (fast.next != null && fast.next.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-
-        return slow;
+    // Method to swap the data of two nodes
+    private void swap(Node<T> a, Node<T> b) {
+        T temp = a.data;
+        a.data = b.data;
+        b.data = temp;
     }
 }
 
@@ -444,7 +400,7 @@ public class Main {
         list.display();
 
         long startTime = System.nanoTime();
-        list.mergeSort(); 
+        list.bubbleSort(); 
         long endTime = System.nanoTime(); 
 
         double duration = (endTime - startTime) / 1e6; // Convert nanoseconds to milliseconds
@@ -453,21 +409,16 @@ public class Main {
         list.display(); // Display the list after sorting
 
         System.out.println("Time taken to sort: " + duration + " milliseconds");
-
-        list.changeSortKey(node -> node.next != null ? node.next.data : Integer.MAX_VALUE); // Change sorting key to the next node's data
-
-        startTime = System.nanoTime(); 
-        list.mergeSort();
-        endTime = System.nanoTime(); 
-
-        duration = (endTime - startTime) / 1e6; // Convert nanoseconds to milliseconds
-
-        System.out.println("After sorting by next node's data:");
-        list.display(); 
-
-        System.out.println("Time taken to sort by next node's data: " + duration + " milliseconds");
     }
 }
 
-Main.main(null)
+Main.main(null);
+
 ```
+
+    Before sorting:
+    5 4 7 2 6 3 1 8 9 
+    After sorting by data:
+    1 2 3 4 5 6 7 8 9 
+    Time taken to sort: 0.0224 milliseconds
+
