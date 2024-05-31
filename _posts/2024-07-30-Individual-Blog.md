@@ -10,6 +10,8 @@ comments: True
 
 ### [Individual Statistics Link](https://github.com/Pitsco)
 
+### [Linkedin](https://www.linkedin.com/in/derrick-huang-30a9b0240/)
+
 ## Machine Learning References
 [Research Paper for CCIR](https://docs.google.com/document/d/1_575a5hAQGO-7pBOH6bUVmYaq5ABJVvQB9EGZTaP06M/edit)
 
