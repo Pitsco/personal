@@ -10,6 +10,32 @@ comments: True
 
 ### [Individual Statistics Link](https://github.com/Pitsco)
 
+## Machine Learning References
+[Research Paper for CCIR](https://docs.google.com/document/d/1_575a5hAQGO-7pBOH6bUVmYaq5ABJVvQB9EGZTaP06M/edit)
+
+### Specific Presentations on Learning
+[Word2Vec: Skipgram](https://docs.google.com/presentation/d/18CeCmyvF00gdGHwpeWPgYNN8dw1TAhZpfrW7DAvfCB4/edit?usp=sharing)
+
+[Bias in Word Embeddings](https://docs.google.com/presentation/d/14LludgojSkUU3r244cm7zAvoUSyNO2165azcBWau0eo/edit?usp=sharing)
+
+[Spearman and Pearson](https://docs.google.com/presentation/d/1cGtHaCEioDsbvXH2LuOJKJQOjiGZNfryWEQrpImV7hQ/edit?usp=sharing)
+
+[Neural Networking](https://docs.google.com/presentation/d/1W0j50C2iT3YXFOsJPkln7BWABxgp8RjDaVmgDYLv79o/edit?usp=sharing)
+
+[Experiment with Text Classifier](https://docs.google.com/presentation/d/1mFr_T-aFGeSjsw-boKkq0RkYjctZsOPFIJ4_wXaI3v0/edit?usp=sharing)
+
+[Architecture with Transformers](https://docs.google.com/presentation/d/1crGu4XM_SPTvwpa7QyQOyaqaHh1EY2VlUeMU0pKXNBA/edit?usp=sharing)
+
+[Tokenization](https://docs.google.com/presentation/d/1Fzqv962cuaKwe3GyODgIhm8yJao_dIvu3vxjaaabyOU/edit?usp=sharing)
+
+# Favorite Projects:
+### [Project 1 with AI]({{site.baseurl}}/c4.0/2024/05/30/Second-Project.html)
+### [Project 2 with Sorting Algorithms]({{site.baseurl}}/c4.0/2024/05/30/First-Project.html)
+
+## Events I particpated in
+- [Images of N@TM, Sorting Algorithmic Dance]({{site.baseurl}}/c4.0/2024/05/30/Events-I-Participated-in.html)
+
+
 # AP Exam Self Study Material
 
 ## College Board MC Review Examples
@@ -49,13 +75,3 @@ comments: True
 
 - [Debugging Practice](https://github.com/Pitsco/personal/issues/7)
 - [Deployment Practice and Reference](https://github.com/Pitsco/personal/issues/5)
-
-## Old References to Project Trimester 1
-
-- [Fibonacci Algorithms, Frontend and Backend with Explanations](https://pitsco.github.io/personal/2023/12/10/Fibonacci_Algorithm_Blog.html)
-- [Sorting Algorithms, Frontend and Backend with Explanations](https://pitsco.github.io/personal/2023/12/10/Sorting-Algorithm-Blog.html)
-
-## Machine Learning References
-
-- [Machine Learning References](https://github.com/Pitsco/personal/issues/8)
-
